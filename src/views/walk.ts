@@ -299,7 +299,8 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
   }
 
   function restart() {
-    if (!confirm('Restart the tour from the beginning?')) return;
+    // No confirm(): some embedders refuse dialogs. Restart at once, with Undo.
+    const before = { ...prog, done: [...prog.done], heard: [...prog.heard], skipped: [...prog.skipped] };
     narrator.pause();
     progress.clear(key);
     prog = progress.get(key);
@@ -312,6 +313,15 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
       demoWalker.setWalking(true);
     }
     renderAll();
+    toast('Tour restarted', {
+      label: 'Undo',
+      run: () => {
+        prog = before;
+        save();
+        fence.reset(prog.done);
+        renderAll();
+      },
+    });
   }
 
   async function onArrival({ stop, missed }: Arrival) {
