@@ -1,5 +1,7 @@
 # Walking Tours
 
+**Live:** https://kgelpes.github.io/walkingtour/
+
 GPS-triggered audio walking tours, as an installable web app (PWA). The first tour is **Kiyomizu-dera, Kyoto**: 9 stops and about 14 minutes of narration voiced with ElevenLabs.
 
 Walk around, and each story starts by itself with a soft chime when you arrive at a stop. There's no app store install and no account. It also works offline once saved.
