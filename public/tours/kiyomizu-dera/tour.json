@@ -1,0 +1,135 @@
+{
+  "id": "kiyomizu-dera",
+  "title": "Kiyomizu-dera",
+  "jp": "清水寺",
+  "city": "Kyoto",
+  "tagline": "The Temple of Pure Water",
+  "description": "Climb from the vermilion Niōmon gate to the legendary wooden stage, then down to the sacred spring that gave the temple its name. Narration starts by itself as you arrive at each stop.",
+  "durationMin": 60,
+  "distanceM": 900,
+  "accent": "#d0402b",
+  "voice": {
+    "provider": "elevenlabs",
+    "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+    "name": "George",
+    "model": "eleven_multilingual_v2"
+  },
+  "intro": {
+    "id": "intro",
+    "title": "Welcome",
+    "text": "Welcome to Kiyomizu-dera, the Temple of Pure Water. I'll be your guide as we climb through more than twelve centuries of history — from the great vermilion gate, across the famous wooden stage, and down to the spring that gave this temple its name.\n\nHere's how this works. Just walk. When you reach each stop, you'll hear a soft chime and I'll start talking — no need to look at your phone. If you want to pause, skip ahead, or hear something again, it's all on the screen. And if you wander off the path, the map will point you to the next stop.\n\nA couple of tips before we begin. Keep this page open with your screen on — that's how your phone knows where you are. The paths here are steep and the stone steps can get crowded, so watch your footing, and step to the side when you want to stop and listen.\n\nOur first stop is the Niōmon, the great red gate at the top of the slope. Head uphill, and I'll meet you there.",
+    "audio": "audio/intro.f380f1395c.mp3",
+    "duration": 56
+  },
+  "stops": [
+    {
+      "id": "niomon",
+      "title": "Niōmon Gate",
+      "jp": "仁王門",
+      "lat": 34.99545,
+      "lng": 135.7833,
+      "radius": 25,
+      "teaser": "The great vermilion gate and its guardian kings",
+      "text": "You're standing before the Niōmon, the Gate of the Deva Kings — and for many visitors, this blaze of vermilion is their first real glimpse of Kiyomizu-dera.\n\nThe gate was rebuilt in the early fifteen-hundreds, and a recent restoration brought back the brilliant colour you see today. Look into the openings on either side. Those two fierce figures are the Niō, guardian kings who keep evil away from sacred ground. At more than three and a half metres tall, they're among the largest in Kyoto. Notice that one has his mouth open and the other closed. Together they form \"a\" and \"un\" — the first and last sounds of the Sanskrit alphabet. The beginning and the end of all things.\n\nNow look at the stone lion-dogs at the foot of the stairs. Usually one has an open mouth and one a closed one, just like the Niō. Here, both are open. Some say they're laughing; others say they're proclaiming the Buddha's teaching together.\n\nDown to your left, at the bottom of the steps, is a modest wooden building called the Umatodome. Samurai visiting the temple tied their horses here before continuing on foot.\n\nThe story of this place begins in the year 778, when a monk named Enchin followed a vision to a waterfall in these hills. A few years later, the great general Sakanoue no Tamuramaro came here hunting deer, met Enchin, and was so moved by his teaching that he became the temple's patron. Most of the buildings you'll see today were rebuilt in the 1630s, after a devastating fire, by order of the Tokugawa shogun.\n\nClimb the steps and pass through the gate. Our next stop is just beyond, beside the three-storied pagoda.",
+      "audio": "audio/niomon.1a5e1d7f3b.mp3",
+      "duration": 103
+    },
+    {
+      "id": "pagoda",
+      "title": "West Gate & Pagoda",
+      "jp": "西門・三重塔",
+      "lat": 34.99512,
+      "lng": 135.78365,
+      "radius": 22,
+      "teaser": "Sunset views and one of Japan's tallest three-storied pagodas",
+      "text": "Just above you is the West Gate, the Saimon, and beyond it rises the Three-Storied Pagoda.\n\nThe West Gate faces the setting sun — and in Buddhist belief, the Western Pure Land of Amida Buddha. Turn around and look out over the rooftops. This is one of the finest views of Kyoto, and at sunset the whole city glows. Monks once practised a meditation here of simply watching the sun go down, contemplating paradise beyond the horizon.\n\nThe bell tower nearby is a little unusual. Most bell towers stand on four pillars; this one stands on six, to carry the weight of its heavy bronze bell.\n\nAnd then there's the pagoda — about thirty-one metres tall, one of the largest three-storied pagodas in Japan. It was rebuilt in 1632 and repainted in its brilliant vermilion in the 1980s. Pagodas descend from the stupas of ancient India, which held relics of the Buddha. This one enshrines Dainichi Nyorai, the cosmic Buddha, though the interior isn't usually open to visitors.\n\nLook up at the corners of the roofs. At the southeast corner, the usual demon-faced roof tile is said to be replaced by a dragon — a water spirit, guarding against fire, the great enemy of every wooden temple in Japan.\n\nWhen you're ready, keep walking east along the path. Our next stop is a small hall with a very unusual experience waiting beneath it.",
+      "audio": "audio/pagoda.d2103285af.mp3",
+      "duration": 89
+    },
+    {
+      "id": "zuigudo",
+      "title": "Zuigu-dō Hall",
+      "jp": "随求堂",
+      "lat": 34.99519,
+      "lng": 135.7841,
+      "radius": 18,
+      "teaser": "A walk through total darkness — the Tainai-meguri",
+      "text": "This hall is the Zuigu-dō, dedicated to Daizuigu Bosatsu, a form of Kannon who is said to grant any wish sincerely made. And beneath this hall lies one of the most memorable experiences in Kyoto: the Tainai-meguri — the journey through the womb.\n\nFor a small fee, you take off your shoes and step down into complete darkness. And I do mean complete — you won't be able to see your hand in front of your face. You guide yourself along a rope of large prayer beads, one step at a time, until you reach a single, softly lit stone carved with a sacred Sanskrit character. Turn the stone, make a wish, and then feel your way back out into the light. The experience symbolises being reborn — cleansed and renewed.\n\nIt only takes a few minutes, and if you have the time, I'd highly recommend it. Please keep your voice low inside; for many people, it's a genuinely spiritual moment.\n\nNearby you'll also see the Sutra Hall, the Kyō-dō, and beyond it the Founder's Hall, the Kaisan-dō, also called the Tamura-dō. It honours the founders of Kiyomizu: the monk Enchin, and the general Sakanoue no Tamuramaro and his wife, whose devotion built the first great hall here.\n\nOur next stop is the Todoroki-mon gate, where the path leads into the Main Hall. Just follow the flow of visitors — you can't miss it.",
+      "audio": "audio/zuigudo.d2993c62a9.mp3",
+      "duration": 86
+    },
+    {
+      "id": "todorokimon",
+      "title": "Todoroki-mon Gate",
+      "jp": "轟門",
+      "lat": 34.99477,
+      "lng": 135.78446,
+      "radius": 20,
+      "teaser": "The Gate of Thunder, and Benkei's iron staff",
+      "text": "This is the Todoroki-mon — the Gate of Thunder. The name refers to the teachings of the Buddha, which are said to resound through the world like a roll of thunder. Inside, two more guardian kings keep watch: Jikokuten, protector of the east, and Kōmokuten, protector of the west.\n\nThis is also where you'll pass the ticket gate for the Main Hall. Hold on to your ticket — it's printed with seasonal scenes of the temple, and makes a lovely souvenir.\n\nAs you enter the Main Hall, look for a pair of iron staffs and a pair of iron clogs. Legend says they belonged to Benkei, the giant warrior monk of the twelfth century, famous for his strength and his loyalty to the hero Minamoto no Yoshitsune. In truth, they were offered by mountain ascetics much later, in the nineteenth century — but that doesn't stop anyone from trying to lift them. The larger staff weighs nearly a hundred kilograms. Go ahead and give it a try. Touching the clogs is also said to bring good luck — which is a much easier option.\n\nThen follow the covered corridor. In a moment, the space will open up, and you'll find yourself on the most famous wooden platform in Japan.",
+      "audio": "audio/todorokimon.849c739102.mp3",
+      "duration": 70
+    },
+    {
+      "id": "stage",
+      "title": "Main Hall & Stage",
+      "jp": "本堂・舞台",
+      "lat": 34.9947,
+      "lng": 135.78497,
+      "radius": 22,
+      "teaser": "The legendary wooden stage, thirteen metres above the trees",
+      "text": "Welcome to the Kiyomizu Stage — the butai.\n\nTake a moment. Walk to the railing, look out across the treetops, and let it sink in. You're standing on a wooden platform that juts out over the hillside about thirteen metres up — roughly the height of a four-storey building.\n\nWhat holds it up? Below you is a lattice of massive zelkova pillars and crossbeams — eighteen pillars in all, some of them more than twelve metres tall. This style of construction is called kakezukuri, and the remarkable thing is that the whole structure is held together by precise wooden joinery, without a single nail. It has stood here since 1633, through centuries of earthquakes and typhoons.\n\nThe stage was built as a place to perform music and dance for the temple's principal deity: an eleven-headed, thousand-armed Kannon, the bodhisattva of compassion. The statue is enshrined in the hall behind you, but it's a hidden image — traditionally shown to the public only once every thirty-three years.\n\nIn Japanese there's a saying: \"to jump from the stage of Kiyomizu.\" It means to take a bold leap — to commit to something with everything you have. And for a while, people did it literally. During the Edo period, more than two hundred people jumped, believing that if they survived, their wish would be granted. Remarkably, the records say most of them did survive — the trees and soft earth below broke their fall. The practice was finally banned in 1872. So please — just enjoy the view.\n\nThe roof above you is made of layer upon layer of cypress bark, a traditional technique called hiwadabuki. It was completely replaced in a major restoration finished in 2020, so it looks just as it would have to the people who built it.\n\nIn spring, the hillside below is a cloud of cherry blossoms. In autumn, it's a fire of red maples. And on any day, the whole of Kyoto spreads out before you.\n\nWhen you're ready, our next stop is the Jishu Shrine, up the steps just behind the Main Hall.",
+      "audio": "audio/stage.f152bcf646.mp3",
+      "duration": 122
+    },
+    {
+      "id": "jishu",
+      "title": "Jishu Shrine",
+      "jp": "地主神社",
+      "lat": 34.99513,
+      "lng": 135.78496,
+      "radius": 20,
+      "teaser": "Kyoto's shrine of love, and its fortune-telling stones",
+      "text": "Up these steps is the Jishu Shrine — a Shinto shrine said to be even older than the temple around it. It's dedicated to Ōkuninushi, a god of love and good relationships, and it's one of the most popular places in Kyoto to pray for a happy match.\n\nA quick note: the shrine has been closed in recent years for a major restoration. If the steps are roped off today, you can still enjoy the story — and perhaps save it for a future visit.\n\nThe shrine is famous for its two love fortune-telling stones, set a short distance apart. The idea is simple. Start at one stone, close your eyes, and try to walk to the other. If you make it on your own, you'll find love on your own. If a friend has to guide you, you'll need a little help finding love, too. Many visitors have discovered that their friends' directions are not entirely reliable.\n\nA Shinto shrine nestled inside a Buddhist temple might seem surprising, but for over a thousand years, that was completely normal in Japan — until the two faiths were officially separated in the late nineteenth century. Kiyomizu is one of the places where you can still feel how naturally they lived side by side.\n\nFrom here, follow the path east, past two small halls, and along the hillside to the Okunoin, the Inner Hall. That's where you'll get the classic view of the stage you were just standing on.",
+      "audio": "audio/jishu.d8e3b26643.mp3",
+      "duration": 82
+    },
+    {
+      "id": "okunoin",
+      "title": "Okunoin Inner Hall",
+      "jp": "奥の院",
+      "lat": 34.99457,
+      "lng": 135.78557,
+      "radius": 20,
+      "teaser": "The postcard view of the stage",
+      "text": "Turn around. This is the view — the one on the postcards. The Main Hall and its great stage, floating above a sea of trees, with the city of Kyoto spreading out beyond.\n\nYou're at the Okunoin, the Inner Hall. Like the Main Hall, it's built out over the slope on its own wooden scaffolding, just on a smaller scale. Tradition holds that this is where the monk Enchin first lived and practised, beside the sacred spring, long before any of the grand buildings existed. It, too, enshrines a thousand-armed Kannon.\n\nTake your time here. This is the best place to appreciate the engineering of the stage: the forest of pillars, the dense web of crossbeams, the way the whole hall seems to rest on the hillside like a great ship at anchor.\n\nOn your way here, you passed two smaller halls — the Shaka-dō and the Amida-dō — dedicated to the historical Buddha, and to Amida, the Buddha of the Western Paradise.\n\nFrom here, you have a choice. If you have an extra fifteen minutes, follow the path south through the trees to the Koyasu Pagoda, a peaceful spot with far fewer crowds. Otherwise, take the stone steps down to the Otowa Waterfall — our final stop, and the sacred spring that gave Kiyomizu its name.",
+      "audio": "audio/okunoin.9e547bb91d.mp3",
+      "duration": 76
+    },
+    {
+      "id": "koyasu",
+      "title": "Koyasu Pagoda",
+      "jp": "子安塔",
+      "lat": 34.99292,
+      "lng": 135.78496,
+      "radius": 25,
+      "optional": true,
+      "teaser": "Optional detour · a quiet pagoda with the best view of the stage",
+      "text": "You've found the Koyasu Pagoda — a small vermilion pagoda perched on the hillside across the valley from the temple. Koyasu means \"safe childbirth,\" and for centuries expectant mothers and their families have come here to pray for an easy delivery and a healthy baby. Inside is enshrined the Koyasu Kannon.\n\nThe pagoda once stood down near the Niōmon gate at the temple's entrance, and was moved to this quiet spot in the early twentieth century.\n\nMost visitors never make it this far, and that's exactly why it's worth it. Look back across the valley. From here you can see the whole of the Main Hall and its stage, framed by the forest — an even more complete view than the one from the Okunoin. In autumn, the maple-filled valley between you and the temple turns a deep, burning red.\n\nWhen you're ready, walk back along the path and take the steps down to the Otowa Waterfall — our final stop.",
+      "audio": "audio/koyasu.10d7d26eb3.mp3",
+      "duration": 56
+    },
+    {
+      "id": "otowa",
+      "title": "Otowa Waterfall",
+      "jp": "音羽の滝",
+      "lat": 34.99442,
+      "lng": 135.78525,
+      "radius": 16,
+      "teaser": "The sacred spring that gave the temple its name",
+      "text": "Welcome to the Otowa Waterfall — the heart of Kiyomizu-dera. It was this spring that drew the monk Enchin here more than twelve hundred years ago, and it gave the temple its name: Kiyomizu, \"pure water.\" In all that time, it's said never to have run dry.\n\nThe water falls in three separate streams. Visitors line up, take one of the long-handled cups, and drink for a blessing. By popular tradition, the three streams bring a long life, success in study, and good fortune in love. Choose wisely: you're meant to drink from only one. Drinking from all three is considered a little greedy. The temple itself will gently tell you that all three are the same pure water, with the same blessing — but where's the fun in that?\n\nThe cups are sterilised in the cabinets after each use, so drink without worry. And look just behind the falls: a statue of Fudō Myōō, the fierce protector, watches over the water.\n\nAnd that brings our tour to a close. Thank you for walking with me.\n\nWhen you leave, follow the path beneath the stage back toward the main gate. On your way down the hill, consider wandering through Sannenzaka and Ninenzaka, two beautifully preserved stone-paved lanes lined with tea houses and craft shops. Just watch your step on Sannenzaka — legend says anyone who trips there will have three years of bad luck. If you do stumble, the shops nearby sell little gourd charms to ward off the curse. Very conveniently.\n\nEnjoy the rest of your day in Kyoto. Sayōnara.",
+      "audio": "audio/otowa.7d0cde35e2.mp3",
+      "duration": 96
+    }
+  ]
+}

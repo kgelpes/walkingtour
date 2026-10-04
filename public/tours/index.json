@@ -1,0 +1,16 @@
+{
+  "tours": [
+    {
+      "id": "kiyomizu-dera",
+      "title": "Kiyomizu-dera",
+      "jp": "清水寺",
+      "city": "Kyoto",
+      "tagline": "The Temple of Pure Water",
+      "durationMin": 60,
+      "stops": 9,
+      "lat": 34.9948,
+      "lng": 135.7845,
+      "accent": "#d0402b"
+    }
+  ]
+}
