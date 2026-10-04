@@ -121,7 +121,7 @@ export async function overviewView(root: HTMLElement, id: string) {
           ),
         ),
         tour.intro && h('button', { class: 'text-link', onclick: () => openStop(tour.intro!) }, 'Read the introduction'),
-        h('p', { class: 'fineprint' }, 'Narration voiced with ElevenLabs. Map © OpenStreetMap contributors, © CARTO.'),
+        h('p', { class: 'fineprint' }, 'Narration voiced with ElevenLabs. Map © OpenStreetMap contributors.'),
       ),
     ),
   );

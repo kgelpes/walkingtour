@@ -92,18 +92,17 @@ test('full walk: intro, arrival while narrating, auto-play, resume after reload'
   expect(errors).toEqual([]);
 });
 
-test('a stop passed again later is offered, not auto-played', async ({ page }) => {
+test('starting mid-route: an earlier, unheard stop still plays by itself', async ({ page }) => {
   await page.goto('./#/tour/kiyomizu-dera');
   await page.evaluate(() => localStorage.setItem('wt:progress:kiyomizu-dera', JSON.stringify({
-    done: ['niomon', 'zuigudo', 'todorokimon'], heard: [], skipped: [], introHeard: true, last: null, startedAt: 1,
+    done: ['koyasu', 'otowa'], heard: ['koyasu', 'otowa'], skipped: [], introHeard: true, last: null, startedAt: 1,
   })));
   await page.reload();
   await page.getByRole('button', { name: /Continue tour/ }).click();
+  await expect(page.locator('.next-card')).toContainText('Niōmon Gate');
   await walkTo(page, at('pagoda'), 5);
-  await expect(page.locator('.banner')).toContainText('You passed', { timeout: 12_000 });
-  expect((await player(page)).playing).toBe(false);
-  await page.locator('.banner').getByRole('button', { name: 'Play' }).click();
-  await expect.poll(async () => (await player(page)).id).toBe('pagoda');
+  await expect.poll(async () => (await player(page)).id, { timeout: 15_000 }).toBe('pagoda');
+  await expect.poll(async () => (await player(page)).playing).toBe(true);
 });
 
 test('demo walk reaches the first stop by itself', async ({ page }) => {

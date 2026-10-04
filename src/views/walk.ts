@@ -324,14 +324,15 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
     });
   }
 
-  async function onArrival({ stop, missed }: Arrival) {
+  async function onArrival({ stop }: Arrival) {
     prog.done.includes(stop.id) || prog.done.push(stop.id);
     save();
     navigator.vibrate?.([80, 60, 80]);
     const s = narrator.state;
     if (s.clip?.id === stop.id) return renderAll(); // already listening to it
-    if (missed || prog.heard.includes(stop.id)) {
-      banner = { kind: missed ? 'missed' : 'arrived', stop };
+    // Any stop not yet heard plays, even out of order: people start mid-route.
+    if (prog.heard.includes(stop.id)) {
+      banner = { kind: 'arrived', stop }; // already heard: offer a replay
       void narrator.chime();
     } else if (s.playing) {
       pending = stop;

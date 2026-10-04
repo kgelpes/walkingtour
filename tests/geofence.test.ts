@@ -113,6 +113,27 @@ describe('Geofence', () => {
     expect(g.next()?.id).toBe('stage');
   });
 
+  it('handles starting mid-route: wraps round to the unfinished stops', () => {
+    const g = new Geofence(tour.stops);
+    // Started the tour standing at the Koyasu Pagoda (stop 8, out of order).
+    for (let i = 0; i < 3; i++) g.update(fix(stop('koyasu'), 5));
+    expect(g.done.has('koyasu')).toBe(true);
+    expect(g.next()?.id).toBe('otowa');
+    g.update(fix(stop('otowa'), 5));
+    // After the end, guidance wraps to stop 1 instead of declaring the tour complete.
+    expect(g.next()?.id).toBe('niomon');
+    // Walking to the stage next (out of order again) still triggers it.
+    for (let i = 0; i < 3; i++) g.update(fix(stop('stage'), 5));
+    expect(g.done.has('stage')).toBe(true);
+    expect(g.next()?.id).toBe('jishu');
+  });
+
+  it('is complete only when every required stop is done', () => {
+    const g = new Geofence(tour.stops);
+    g.reset(tour.stops.filter((s) => !s.optional).map((s) => s.id));
+    expect(g.next()).toBeNull();
+  });
+
   it('picks the closest fence when two overlap', () => {
     const g = new Geofence(tour.stops);
     g.reset(['niomon', 'pagoda', 'zuigudo', 'todorokimon', 'stage', 'jishu']);

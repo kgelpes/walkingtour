@@ -363,3 +363,7 @@ svg { display: block; flex-shrink: 0; }
 }
 
 .walk.sheet-expanded .locate-btn, .walk.sheet-expanded .leaflet-control-attribution { opacity: 0; pointer-events: none; }
+
+@media (prefers-color-scheme: dark) {
+  .osm-tiles { filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.85) saturate(0.6); }
+}

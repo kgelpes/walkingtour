@@ -29,14 +29,12 @@ export class TourMap {
     });
     this.map.attributionControl.setPrefix(false);
     L.tileLayer(TILE_URL(), {
-      subdomains: 'abcd',
       maxNativeZoom: TILE_MAX_NATIVE_ZOOM,
       maxZoom: 20,
-      detectRetina: false,
-      r: L.Browser.retina ? '@2x' : '',
       crossOrigin: true,
-      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/attributions">CARTO</a>',
-    } as L.TileLayerOptions).addTo(this.map);
+      className: 'osm-tiles',
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(this.map);
 
     const pts = stops.map((s) => [s.lat, s.lng] as L.LatLngTuple);
     const required = stops.filter((s) => !s.optional).map((s) => [s.lat, s.lng] as L.LatLngTuple);

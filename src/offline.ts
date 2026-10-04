@@ -3,38 +3,16 @@ import type { Tour } from './types';
 
 // Must match public/sw.js.
 export const MEDIA_CACHE = 'wt-media-v1';
-export const TILE_CACHE = 'wt-tiles-v1';
 export const SHELL_CACHE = 'wt-shell-v1';
 
-export const TILE_STYLE = () => (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark_all' : 'voyager');
-export const TILE_URL = (style = TILE_STYLE()) =>
-  `https://{s}.basemaps.cartocdn.com/rastertiles/${style}/{z}/{x}/{y}{r}.png`;
-export const TILE_MIN_ZOOM = 15;
-export const TILE_MAX_NATIVE_ZOOM = 18;
+// OpenStreetMap's standard tiles: no key needed. Their usage policy forbids bulk
+// prefetching, so offline maps are limited to tiles already viewed (cached by the SW).
+export const TILE_URL = () => 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+export const TILE_MAX_NATIVE_ZOOM = 19;
 
 function audioUrls(tour: Tour): string[] {
   const base = tourBase(tour.id);
   return [tour.intro, ...tour.stops].filter((c) => c?.audio).map((c) => new URL(c!.audio!, base).href);
-}
-
-function tileUrls(tour: Tour): string[] {
-  const lats = tour.stops.map((s) => s.lat);
-  const lngs = tour.stops.map((s) => s.lng);
-  const pad = 0.0015; // ~150 m
-  const [s, n, w, e] = [Math.min(...lats) - pad, Math.max(...lats) + pad, Math.min(...lngs) - pad, Math.max(...lngs) + pad];
-  const r = devicePixelRatio > 1 ? '@2x' : '';
-  const style = TILE_STYLE();
-  const x = (lng: number, z: number) => Math.floor(((lng + 180) / 360) * 2 ** z);
-  const y = (lat: number, z: number) => {
-    const rad = (lat * Math.PI) / 180;
-    return Math.floor(((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * 2 ** z);
-  };
-  const urls: string[] = [];
-  for (let z = TILE_MIN_ZOOM; z <= TILE_MAX_NATIVE_ZOOM; z++)
-    for (let tx = x(w, z); tx <= x(e, z); tx++)
-      for (let ty = y(n, z); ty <= y(s, z); ty++)
-        urls.push(`https://a.basemaps.cartocdn.com/rastertiles/${style}/${z}/${tx}/${ty}${r}.png`);
-  return urls;
 }
 
 function shellUrls(tour: Tour): string[] {
@@ -68,7 +46,6 @@ export async function saveOffline(tour: Tour, onProgress: (fraction: number) => 
   const jobs: [string, string][] = [
     ...audioUrls(tour).map((u) => [MEDIA_CACHE, u] as [string, string]),
     ...shellUrls(tour).map((u) => [SHELL_CACHE, u] as [string, string]),
-    ...tileUrls(tour).map((u) => [TILE_CACHE, u] as [string, string]),
   ];
   let done = 0;
   let failedAudio = 0;

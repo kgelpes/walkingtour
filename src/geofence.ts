@@ -32,11 +32,13 @@ export interface Arrival {
  *   precisely (no accuracy bonus, more fixes). This keeps adjacent fences — e.g.
  *   the stage hanging right above the waterfall — from firing early.
  * - Each stop fires at most once; `done` stops never fire again.
- * - A stop behind the walker's progress (missed earlier, passed again on the way
- *   out) is reported as `missed` so the app can offer it instead of auto-playing.
+ * - A stop behind the walker's progress (missed earlier, or skipped by starting
+ *   mid-route) is reported as `missed`.
  */
 export class Geofence {
   readonly done = new Set<string>();
+  /** Most recently finished stop: guidance continues from here. */
+  private last: string | null = null;
   private candidate: { id: string; count: number } | null = null;
 
   constructor(
@@ -46,21 +48,32 @@ export class Geofence {
 
   markDone(id: string) {
     this.done.add(id);
+    this.last = id;
     if (this.candidate?.id === id) this.candidate = null;
   }
 
+  /** `done` in the order the stops were finished. */
   reset(done: Iterable<string> = []) {
     this.done.clear();
-    for (const id of done) this.done.add(id);
+    this.last = null;
+    for (const id of done) {
+      this.done.add(id);
+      this.last = id;
+    }
     this.candidate = null;
   }
 
-  /** The stop the walker should head to: the first unfinished stop after the furthest finished one. */
+  /**
+   * The stop the walker should head to: the first unfinished stop after the
+   * one they finished last; past the end, wrap round to the first unfinished
+   * required stop (someone who started mid-route still gets the rest).
+   */
   next(): Stop | null {
-    for (let i = this.furthest() + 1; i < this.stops.length; i++) {
+    const from = this.last ? this.stops.findIndex((s) => s.id === this.last) : -1;
+    for (let i = from + 1; i < this.stops.length; i++) {
       if (!this.done.has(this.stops[i].id)) return this.stops[i];
     }
-    return null;
+    return this.stops.find((s) => !s.optional && !this.done.has(s.id)) ?? null;
   }
 
   private furthest(): number {

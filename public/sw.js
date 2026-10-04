@@ -1,7 +1,7 @@
 // Offline support. Cache names must match src/offline.ts.
 const SHELL = 'wt-shell-v1';
 const MEDIA = 'wt-media-v1';
-const TILES = 'wt-tiles-v1';
+const TILES = 'wt-tiles-v2';
 const KEEP = [SHELL, MEDIA, TILES];
 
 self.addEventListener('install', (event) => {
@@ -32,7 +32,7 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
 
-  if (url.hostname.endsWith('basemaps.cartocdn.com')) return event.respondWith(tile(req));
+  if (url.hostname === 'tile.openstreetmap.org') return event.respondWith(tile(req));
   if (url.hostname.endsWith('fonts.googleapis.com') || url.hostname.endsWith('fonts.gstatic.com'))
     return event.respondWith(staleWhileRevalidate(req, SHELL));
   if (url.origin !== location.origin) return;
@@ -87,8 +87,7 @@ async function staleWhileRevalidate(req, name) {
 }
 
 async function tile(req) {
-  // Subdomains a–d serve identical tiles; store one copy.
-  const key = req.url.replace(/^https:\/\/[a-d]\./, 'https://a.');
+  const key = req.url;
   const cache = await caches.open(TILES);
   const hit = await cache.match(key, { ignoreVary: true });
   if (hit) return hit;
