@@ -1,3 +1,4 @@
+import type { MusicMode } from './audio';
 import type { Tour, TourSummary } from './types';
 
 export interface Progress {
@@ -37,11 +38,13 @@ export const progress = {
 
 export interface Settings {
   autoplay: boolean;
-  mixWithMusic: boolean;
+  music: MusicMode;
+  /** Story volume, 0–1. */
+  volume: number;
 }
 
 export const settings = {
-  get: (): Settings => read('wt:settings', { autoplay: true, mixWithMusic: false }),
+  get: (): Settings => read('wt:settings', { autoplay: true, music: 'lower', volume: 1 }),
   set: (s: Settings) => write('wt:settings', s),
 };
 
