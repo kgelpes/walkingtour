@@ -369,3 +369,21 @@ svg { display: block; flex-shrink: 0; }
 @media (prefers-color-scheme: dark) {
   .osm-tiles { filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.85) saturate(0.6); }
 }
+
+/* install */
+.install-card { display: flex; align-items: center; gap: 12px; padding: 12px 8px 12px 14px; margin-bottom: 16px; border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
+.install-card img { border-radius: 12px; flex-shrink: 0; }
+.install-card > div { flex: 1; min-width: 0; }
+.install-card strong { display: block; font-size: 15px; }
+.install-card span { display: block; font-size: 13px; color: var(--ink-2); }
+.install-card .icon-btn { width: 36px; height: 36px; color: var(--ink-3); }
+.install-card .icon-btn svg { width: 18px; height: 18px; }
+.install-steps p { color: var(--ink-2); margin-bottom: 16px; }
+.install-steps ol { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 14px; }
+.install-steps li { display: flex; align-items: center; gap: 14px; font-size: 16px; }
+.step-icon { width: 40px; height: 40px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; flex-shrink: 0; }
+.step-icon svg { width: 20px; height: 20px; }
+
+/* Feel like an app: no text selection or callouts on controls, no tap delay. */
+button, .btn, .icon-btn, .tour-card, .stop-row, .pin { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; touch-action: manipulation; }
+@media (display-mode: standalone) { body { -webkit-user-select: none; user-select: none; } .transcript, .transcript * { -webkit-user-select: text; user-select: text; } }

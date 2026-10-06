@@ -1,7 +1,7 @@
 {
   "name": "Walking Tours",
   "short_name": "Tours",
-  "description": "GPS audio walking tours that play by themselves as you walk.",
+  "description": "GPS audio tours that play by themselves as you go: Kiyomizu-dera on foot, and the Shinkansen from Kyoto to Tokyo.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -9,9 +9,85 @@
   "background_color": "#f6f1e9",
   "theme_color": "#f6f1e9",
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
-    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "id": "./",
+  "display_override": [
+    "standalone"
+  ],
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "categories": [
+    "travel",
+    "education",
+    "navigation"
+  ],
+  "shortcuts": [
+    {
+      "name": "Kiyomizu-dera walk",
+      "short_name": "Kiyomizu",
+      "url": "./#/tour/kiyomizu-dera",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Shinkansen to Tokyo",
+      "short_name": "Shinkansen",
+      "url": "./#/tour/shinkansen-kyoto-tokyo",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/home.png",
+      "sizes": "780x1688",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Pick a tour"
+    },
+    {
+      "src": "screenshots/shinkansen.png",
+      "sizes": "780x1688",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "The view from seat E"
+    },
+    {
+      "src": "screenshots/kiyomizu.png",
+      "sizes": "780x1688",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Kiyomizu-dera on foot"
+    }
   ]
 }

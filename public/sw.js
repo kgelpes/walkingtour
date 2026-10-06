@@ -1,11 +1,21 @@
-// Offline support. Cache names must match src/offline.ts.
-const SHELL = 'wt-shell-v1';
+// Offline support. Media/tile cache names must match src/offline.ts.
+// VERSION and PRECACHE are filled in at build time (vite.config.ts).
+const VERSION = 'dev';
+const PRECACHE = ['./'];
+const SHELL = `wt-shell-${VERSION}`;
+const FONTS = 'wt-fonts-v1';
 const MEDIA = 'wt-media-v1';
 const TILES = 'wt-tiles-v2';
-const KEEP = [SHELL, MEDIA, TILES];
+const KEEP = [SHELL, FONTS, MEDIA, TILES];
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(SHELL).then((c) => c.addAll(['./'])).catch(() => {}).then(() => self.skipWaiting()));
+  event.waitUntil(
+    caches.open(SHELL).then((c) => c.addAll(PRECACHE)).then(() => {
+      // First install: take over right away. Updates wait until the page says
+      // so, so new code never swaps in under someone in the middle of a tour.
+      if (!self.registration.active) return self.skipWaiting();
+    }),
+  );
 });
 
 self.addEventListener('activate', (event) => {
@@ -16,15 +26,8 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// The page sends the resources it loaded so the app shell works offline after the first visit.
 self.addEventListener('message', (event) => {
-  if (event.data?.type === 'warm' && Array.isArray(event.data.urls)) {
-    event.waitUntil(
-      caches.open(SHELL).then((c) =>
-        Promise.all(event.data.urls.map((u) => c.match(u, { ignoreVary: true }).then((hit) => hit || c.add(u)).catch(() => {}))),
-      ),
-    );
-  }
+  if (event.data?.type === 'skip-waiting') self.skipWaiting();
 });
 
 self.addEventListener('fetch', (event) => {
@@ -34,7 +37,7 @@ self.addEventListener('fetch', (event) => {
 
   if (url.hostname === 'tile.openstreetmap.org') return event.respondWith(tile(req));
   if (url.hostname.endsWith('fonts.googleapis.com') || url.hostname.endsWith('fonts.gstatic.com'))
-    return event.respondWith(staleWhileRevalidate(req, SHELL));
+    return event.respondWith(staleWhileRevalidate(req, FONTS));
   if (url.origin !== location.origin) return;
 
   if (url.pathname.endsWith('.mp3')) return event.respondWith(audio(event, req));

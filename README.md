@@ -2,7 +2,7 @@
 
 **Live:** https://kgelpes.github.io/walkingtour/
 
-GPS-triggered audio tours, as an installable web app (PWA):
+GPS-triggered audio tours, as an installable app (PWA: install it from the home screen card, works offline from the first launch):
 
 - **Kiyomizu-dera, Kyoto**: a walking tour with 9 stops and about 14 minutes of narration.
 - **Shinkansen to Tokyo**: the view from seat E of a Nozomi, Kyoto → Tokyo. 18 views, each announced about a minute before it appears, voiced with ElevenLabs v4 and its expressive tags (`[excited]`, `[whispers]`, …).

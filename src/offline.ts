@@ -3,7 +3,6 @@ import type { Tour } from './types';
 
 // Must match public/sw.js.
 export const MEDIA_CACHE = 'wt-media-v1';
-export const SHELL_CACHE = 'wt-shell-v1';
 
 // OpenStreetMap's standard tiles: no key needed. Their usage policy forbids bulk
 // prefetching, so offline maps are limited to tiles already viewed (cached by the SW).
@@ -13,20 +12,6 @@ export const TILE_MAX_NATIVE_ZOOM = 19;
 function audioUrls(tour: Tour): string[] {
   const base = tourBase(tour.id);
   return [tour.intro, ...tour.stops].filter((c) => c?.audio).map((c) => new URL(c!.audio!, base).href);
-}
-
-function shellUrls(tour: Tour): string[] {
-  const urls = new Set<string>([
-    new URL('./', document.baseURI).href,
-    new URL('tours/index.json', document.baseURI).href,
-    `${tourBase(tour.id)}tour.json`,
-  ]);
-  for (const e of performance.getEntriesByType('resource') as PerformanceResourceTiming[]) {
-    const u = new URL(e.name);
-    if (u.origin === location.origin && /\.(js|css|svg|png|webmanifest|woff2?)$/.test(u.pathname)) urls.add(u.href);
-    if (u.hostname.endsWith('fonts.googleapis.com') || u.hostname.endsWith('fonts.gstatic.com')) urls.add(u.href);
-  }
-  return [...urls];
 }
 
 export async function offlineStatus(tour: Tour): Promise<{ ready: boolean; bytes: number }> {
@@ -42,10 +27,16 @@ export function estimateMB(tour: Tour): number {
   return Math.round((secs * 96_000) / 8 / 1e6 + 1);
 }
 
+/** Ask the browser not to evict saved tours under storage pressure. */
+export function persistStorage() {
+  void navigator.storage?.persist?.().catch(() => {});
+}
+
+/** The app itself is precached by the service worker; this saves a tour's narration. */
 export async function saveOffline(tour: Tour, onProgress: (fraction: number) => void): Promise<void> {
+  persistStorage();
   const jobs: [string, string][] = [
     ...audioUrls(tour).map((u) => [MEDIA_CACHE, u] as [string, string]),
-    ...shellUrls(tour).map((u) => [SHELL_CACHE, u] as [string, string]),
   ];
   let done = 0;
   let failedAudio = 0;

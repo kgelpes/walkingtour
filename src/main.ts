@@ -1,5 +1,7 @@
 import './styles.css';
 import { go } from './app';
+import { toast } from './dom';
+import './install';
 import { h } from './dom';
 import { homeView } from './views/home';
 import { overviewView } from './views/overview';
@@ -36,11 +38,27 @@ window.addEventListener('hashchange', route);
 route();
 
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
-  navigator.serviceWorker.register('./sw.js').then(async (reg) => {
-    await navigator.serviceWorker.ready;
-    const urls = (performance.getEntriesByType('resource') as PerformanceResourceTiming[])
-      .map((e) => e.name)
-      .filter((u) => u.startsWith(location.origin) && /\.(js|css|svg|png|webmanifest)$/.test(new URL(u).pathname));
-    (reg.active ?? navigator.serviceWorker.controller)?.postMessage({ type: 'warm', urls: [location.href.split('#')[0], ...urls] });
+  // Updates install in the background and wait; the user picks the moment to switch,
+  // so new code never replaces the app in the middle of a tour.
+  let updating = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => updating && location.reload());
+  const offer = (worker: ServiceWorker) =>
+    toast('A new version of the app is ready.', {
+      label: 'Update',
+      run: () => {
+        updating = true;
+        worker.postMessage({ type: 'skip-waiting' });
+      },
+    }, 20000);
+  navigator.serviceWorker.register('./sw.js').then((reg) => {
+    if (reg.waiting && navigator.serviceWorker.controller) offer(reg.waiting);
+    reg.addEventListener('updatefound', () => {
+      const worker = reg.installing;
+      worker?.addEventListener('statechange', () => {
+        if (worker.state === 'installed' && navigator.serviceWorker.controller) offer(worker);
+      });
+    });
+    // Installed apps can stay open for days: check for updates when brought back.
+    document.addEventListener('visibilitychange', () => document.visibilityState === 'visible' && reg.update().catch(() => {}));
   }).catch(() => {});
 }

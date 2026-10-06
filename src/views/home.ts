@@ -1,6 +1,7 @@
 import { h } from '../dom';
 import { distance, formatDistance, formatDuration } from '../geo';
 import { icons, tourArt } from '../icons';
+import { canOfferInstall, dismissInstall, install, onInstallChange } from '../install';
 import { loadIndex, progress } from '../store';
 
 export async function homeView(root: HTMLElement) {
@@ -26,12 +27,29 @@ export async function homeView(root: HTMLElement) {
     return { card, dist, t };
   });
 
+  // "Install the app" card: shown where the browser can install, or on iOS with manual steps.
+  const installSlot = h('div');
+  const renderInstall = () => {
+    installSlot.replaceChildren(
+      canOfferInstall()
+        ? h('div', { class: 'install-card' },
+            h('img', { src: 'icons/icon-192.png', alt: '', width: '48', height: '48' }),
+            h('div', null, h('strong', null, 'Get the app'), h('span', null, 'Full screen, offline, one tap from your home screen.')),
+            h('button', { class: 'btn primary small', onclick: () => void install() }, 'Install'),
+            h('button', { class: 'icon-btn plain', 'aria-label': 'Not now', html: icons.close, onclick: dismissInstall }))
+        : '',
+    );
+  };
+  renderInstall();
+  const offInstall = onInstallChange(renderInstall);
+
   root.append(
     h('main', { class: 'home' },
       h('header', { class: 'home-head' },
         h('div', { class: 'brand' }, h('span', { class: 'brand-mark', html: icons.headphones }), 'Walking Tours'),
         h('h1', null, 'Audio guides that play themselves as you go.'),
       ),
+      installSlot,
       h('section', { class: 'tour-list', 'aria-label': 'Tours' }, ...cards.map((c) => c.card)),
       h('div', { class: 'soon' },
         h('span', { html: icons.sparkle }),
@@ -52,4 +70,5 @@ export async function homeView(root: HTMLElement) {
       }, () => {}, { maximumAge: 60000, timeout: 10000 });
     }
   } catch { /* permissions API missing */ }
+  return () => offInstall();
 }
