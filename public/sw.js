@@ -50,7 +50,9 @@ self.addEventListener('fetch', (event) => {
 async function networkFirst(req, fallbackKey) {
   const cache = await caches.open(SHELL);
   try {
-    const res = await fetchWithTimeout(req, 4000);
+    // Bypass the browser's HTTP cache (GitHub Pages allows 10 minutes) so a new
+    // deploy shows on the next launch; the server answers 304 when nothing changed.
+    const res = await fetchWithTimeout(new Request(req, { cache: 'no-cache' }), 4000);
     if (res.ok) cache.put(fallbackKey || req, res.clone());
     return res;
   } catch {
