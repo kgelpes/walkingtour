@@ -3,6 +3,7 @@ import { h, sheet, toast } from '../dom';
 import { DEFAULT_OPTIONS, Geofence, type Arrival } from '../geofence';
 import { bearing, compassWord, distance, formatDistance, formatEta, formatTime, formatWalk } from '../geo';
 import { icons } from '../icons';
+import { Narrator } from '../audio';
 import { DemoWalker, GpsSource, type GpsStatus, type LocationSource } from '../location';
 import { TourMap } from '../map';
 import { loadTour, progress, settings, tourBase, type Progress } from '../store';
@@ -40,6 +41,7 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
   const save = () => progress.set(key, prog);
   save();
   const prefs = settings.get();
+  narrator.mixWithMusic = prefs.mixWithMusic;
 
   const train = tour.mode === 'train';
   const noun = tour.stopNoun ?? 'stop';
@@ -242,10 +244,14 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
     };
     const auto = h('input', { type: 'checkbox', role: 'switch', checked: prefs.autoplay });
     auto.addEventListener('change', () => { prefs.autoplay = auto.checked; settings.set(prefs); });
+    const mix = h('input', { type: 'checkbox', role: 'switch', checked: prefs.mixWithMusic });
+    mix.addEventListener('change', () => { prefs.mixWithMusic = narrator.mixWithMusic = mix.checked; settings.set(prefs); });
     listEl.replaceChildren(
       h('ol', null, ...(tour.intro ? [row(tour.intro, null)] : []), ...stops.map((s, i) => row(s, i))),
       h('div', { class: 'list-footer' },
         h('label', { class: 'switch' }, auto, h('span', { class: 'track' }), h('span', null, 'Play automatically on arrival')),
+        Narrator.canMixWithMusic && h('label', { class: 'switch' }, mix, h('span', { class: 'track' }),
+          h('span', null, 'Keep my music playing', h('small', null, 'Spotify or Apple Music gets quieter during each story instead of stopping'))),
         h('button', { class: 'text-link', onclick: restart }, 'Restart tour')),
     );
   }

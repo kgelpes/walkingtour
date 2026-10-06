@@ -333,6 +333,7 @@ svg { display: block; flex-shrink: 0; }
 .switch input:checked + .track::after { transform: translateX(18px); }
 .switch input:focus-visible + .track { outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent); outline-offset: 2px; }
 .list-footer .text-link { align-self: flex-start; }
+.switch small { display: block; font-size: 13px; color: var(--ink-3); }
 
 /* map pins */
 .pin { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); color: var(--accent); border: 3px solid var(--accent); font-weight: 700; font-size: 14px; box-shadow: 0 3px 10px rgba(0,0,0,0.25); transition: transform 0.2s; }

@@ -37,10 +37,11 @@ export const progress = {
 
 export interface Settings {
   autoplay: boolean;
+  mixWithMusic: boolean;
 }
 
 export const settings = {
-  get: (): Settings => read('wt:settings', { autoplay: true }),
+  get: (): Settings => read('wt:settings', { autoplay: true, mixWithMusic: false }),
   set: (s: Settings) => write('wt:settings', s),
 };
 

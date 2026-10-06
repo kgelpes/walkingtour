@@ -166,3 +166,26 @@ test('train tour: demo ride keeps moving and plays the first view', async ({ pag
   await expect(page.locator('.transcript')).toContainText('out of the tunnels');
   await expect(page.locator('.transcript')).not.toContainText('[excited]');
 });
+
+test('"Keep my music playing" ducks other audio only while a story plays', async ({ page }) => {
+  // Safari's Audio Session API, stubbed so the wiring can be checked in Chromium.
+  await page.addInitScript(() => {
+    (navigator as any).audioSession = { type: 'auto', log: [] as string[] };
+    const s = (navigator as any).audioSession;
+    let t = 'auto';
+    Object.defineProperty(s, 'type', { get: () => t, set: (v: string) => { t = v; s.log.push(v); } });
+  });
+  await page.goto('./#/tour/kiyomizu-dera');
+  await page.getByRole('button', { name: 'Start tour' }).click();
+  await page.locator('.sheet-handle').click();
+  await page.getByText('Keep my music playing').click();
+  await page.locator('.sheet-handle').click();
+  const type = () => page.evaluate(() => (navigator as any).audioSession.type);
+  await page.getByRole('button', { name: 'Pause' }).click();
+  await expect.poll(type).toBe('ambient');
+  await page.getByRole('button', { name: 'Play' }).click();
+  await expect.poll(type).toBe('transient');
+  await expect.poll(async () => (await player(page)).playing).toBe(true);
+  await page.getByRole('button', { name: 'Pause' }).click();
+  await expect.poll(type).toBe('ambient');
+});

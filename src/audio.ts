@@ -41,6 +41,24 @@ export class Narrator {
   state: PlayerState = { clip: null, playing: false, loading: false, time: 0, duration: 0, blocked: false };
   artwork = '';
   album = '';
+  /**
+   * Let the listener's own music (Spotify, Apple Music…) keep playing: it's
+   * lowered while a story plays, like navigation directions, instead of paused.
+   * Uses the Audio Session API (Safari 16.4+); elsewhere it does nothing.
+   */
+  mixWithMusic = false;
+
+  static get canMixWithMusic(): boolean {
+    return 'audioSession' in navigator;
+  }
+
+  private setSession(speaking: boolean) {
+    const session = (navigator as any).audioSession;
+    if (!session) return;
+    try {
+      session.type = !this.mixWithMusic ? 'auto' : speaking ? 'transient' : 'ambient';
+    } catch { /* unsupported type */ }
+  }
 
   constructor() {
     this.el.preload = 'auto';
@@ -53,6 +71,7 @@ export class Narrator {
     for (const ev of ['play', 'pause', 'timeupdate', 'durationchange', 'seeked']) this.el.addEventListener(ev, sync);
     this.el.addEventListener('playing', () => this.set({ loading: false, blocked: false }));
     this.el.addEventListener('waiting', () => this.set({ loading: true }));
+    this.el.addEventListener('pause', () => this.setSession(false));
     this.el.addEventListener('ended', () => {
       sync();
       const clip = this.state.clip;
@@ -98,6 +117,7 @@ export class Narrator {
     if (!this.state.clip) {
       this.silent ||= silentWav();
       this.el.src = this.silent;
+      this.setSession(false);
       this.el.play().catch((e) => { if (e.name === 'NotAllowedError') this.unlocked = false; });
     }
   }
@@ -143,6 +163,7 @@ export class Narrator {
       return true;
     }
     try {
+      this.setSession(true);
       await this.el.play();
       return true;
     } catch (e) {
@@ -162,6 +183,7 @@ export class Narrator {
     if (!this.state.clip) return;
     if (this.el.paused) {
       if (this.el.ended) this.el.currentTime = 0;
+      this.setSession(true);
       this.el.play().then(
         () => this.set({ blocked: false }),
         () => this.set({ blocked: true }),
