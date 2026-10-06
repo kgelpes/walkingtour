@@ -39,7 +39,7 @@ export const progress = {
 export interface Settings {
   autoplay: boolean;
   music: MusicMode;
-  /** Story volume, 0–1. */
+  /** Story volume, 0–2 (above 1 is a boost). */
   volume: number;
 }
 

@@ -224,8 +224,13 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
 
   /** Always-visible sound row: story volume, and what your own music does during a story. */
   function soundControls() {
-    const vol = h('input', { type: 'range', min: '0', max: '1', step: '0.05', value: String(prefs.volume), 'aria-label': 'Story volume' });
-    const paint = () => vol.style.setProperty('--pct', `${Number(vol.value) * 100}%`);
+    const vol = h('input', { type: 'range', min: '0', max: '2', step: '0.05', value: String(prefs.volume), 'aria-label': 'Story volume' });
+    const pct = h('span', { class: 'sound-pct' });
+    const paint = () => {
+      vol.style.setProperty('--pct', `${Number(vol.value) * 50}%`);
+      pct.textContent = `${Math.round(Number(vol.value) * 100)}%`;
+      vol.setAttribute('aria-valuetext', pct.textContent);
+    };
     paint();
     vol.addEventListener('input', () => {
       prefs.volume = Number(vol.value);
@@ -245,7 +250,7 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
         return h('label', null, input, h('span', null, label));
       }));
     return h('div', { class: 'sound' },
-      h('div', { class: 'sound-row' }, h('span', { class: 'sound-label', html: icons.volume, title: 'Story volume' }), vol),
+      h('div', { class: 'sound-row' }, h('span', { class: 'sound-label', html: icons.volume, title: 'Story volume' }), vol, pct),
       h('div', { class: 'sound-row' },
         h('span', { class: 'sound-label', html: icons.music, title: 'Your music during a story' }),
         h('span', { class: 'sound-text' }, 'Your music', !Narrator.canMixWithMusic && h('small', null, 'Needs Safari on iPhone')),

@@ -345,6 +345,7 @@ svg { display: block; flex-shrink: 0; }
 .sound input[type='range']::-moz-range-progress { height: 5px; border-radius: 3px; background: var(--accent); }
 .sound input[type='range']::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; margin-top: -6.5px; border-radius: 50%; background: var(--accent); }
 .sound input[type='range']::-moz-range-thumb { width: 18px; height: 18px; border: 0; border-radius: 50%; background: var(--accent); }
+.sound-pct { font-size: 13px; font-weight: 600; color: var(--ink-3); min-width: 3.2em; text-align: right; font-variant-numeric: tabular-nums; }
 .seg { display: inline-flex; background: var(--surface-2); border-radius: 10px; padding: 2px; flex-shrink: 0; }
 .seg label { position: relative; cursor: pointer; }
 .seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }

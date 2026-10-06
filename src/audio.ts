@@ -71,21 +71,36 @@ export class Narrator {
     } catch { /* unsupported type */ }
   }
 
-  /** Story volume, 0–1. Also scales the arrival chime. */
+  /**
+   * Story volume, 0–2. Above 1 it's a boost (through a limiter), so a story can
+   * stand out over music the system only lowers a little. Also scales the chime.
+   */
   setVolume(v: number) {
     this.volume = v;
-    this.el.volume = v;
-    // iOS ignores <audio>.volume (it stays 1): route through a Web Audio gain instead.
-    if (!this.gain && Math.abs(this.el.volume - v) > 0.01) {
-      this.ensureContext();
-      if (this.ctx) {
-        try {
-          this.gain = this.ctx.createGain();
-          this.ctx.createMediaElementSource(this.el).connect(this.gain).connect(this.ctx.destination);
-        } catch { this.gain = null; }
-      }
+    this.el.volume = Math.min(1, v);
+    // A boost needs Web Audio, and so does iOS, which ignores <audio>.volume (it stays 1).
+    if (!this.gain && (v > 1 || Math.abs(this.el.volume - v) > 0.01)) this.routeThroughGain();
+    if (this.gain) {
+      this.el.volume = 1;
+      this.gain.gain.value = v;
     }
-    if (this.gain) this.gain.gain.value = v;
+  }
+
+  private routeThroughGain() {
+    this.ensureContext();
+    const ctx = this.ctx;
+    if (!ctx) return;
+    try {
+      const gain = ctx.createGain();
+      const limiter = ctx.createDynamicsCompressor();
+      limiter.threshold.value = -3;
+      limiter.knee.value = 0;
+      limiter.ratio.value = 20;
+      limiter.attack.value = 0.002;
+      limiter.release.value = 0.1;
+      ctx.createMediaElementSource(this.el).connect(gain).connect(limiter).connect(ctx.destination);
+      this.gain = gain;
+    } catch { /* stays at the element's own volume */ }
   }
 
   constructor() {
@@ -192,6 +207,7 @@ export class Narrator {
     }
     try {
       this.setSession(true);
+      if (this.gain) this.ensureContext();
       await this.el.play();
       return true;
     } catch (e) {
@@ -241,7 +257,7 @@ export class Narrator {
     if (!ctx || ctx.state !== 'running') return Promise.resolve();
     const now = ctx.currentTime;
     const out = ctx.createGain();
-    out.gain.value = 0.35 * this.volume;
+    out.gain.value = 0.35 * Math.min(1, this.volume);
     out.connect(ctx.destination);
     const strike = (freq: number, at: number) => {
       for (const [mult, amp, decay] of [[1, 1, 2.2], [2.76, 0.35, 1.2], [5.4, 0.12, 0.6]]) {
@@ -271,7 +287,7 @@ export class Narrator {
     const u = new SpeechSynthesisUtterance(clip.text);
     u.lang = 'en-GB';
     u.rate = 0.95;
-    u.volume = this.volume;
+    u.volume = Math.min(1, this.volume);
     this.speaking = true;
     u.onend = () => {
       if (!this.speaking) return;

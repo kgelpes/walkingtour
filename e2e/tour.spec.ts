@@ -194,4 +194,9 @@ test('your music keeps playing by default: lowered during a story, adjustable', 
 
   await page.getByRole('slider', { name: 'Story volume' }).fill('0.4');
   await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem('wt:settings')!).volume)).toBe(0.4);
+  // Above 100% is a boost through Web Audio, and the story keeps playing.
+  await page.getByRole('slider', { name: 'Story volume' }).fill('1.6');
+  await expect(page.locator('.sound-pct')).toHaveText('160%');
+  await expect.poll(() => page.evaluate(() => (window as any).__wt.narrator.gain?.gain.value)).toBeCloseTo(1.6);
+  await expect.poll(async () => (await player(page)).playing).toBe(true);
 });
