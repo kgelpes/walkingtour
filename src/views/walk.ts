@@ -3,7 +3,7 @@ import { h, sheet, toast } from '../dom';
 import { DEFAULT_OPTIONS, Geofence, type Arrival } from '../geofence';
 import { bearing, compassWord, distance, formatDistance, formatEta, formatTime, formatWalk } from '../geo';
 import { icons } from '../icons';
-import { Narrator } from '../audio';
+import { Narrator, type MusicMode } from '../audio';
 import { DemoWalker, GpsSource, type GpsStatus, type LocationSource } from '../location';
 import { TourMap } from '../map';
 import { loadTour, progress, settings, tourBase, type Progress } from '../store';
@@ -41,7 +41,8 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
   const save = () => progress.set(key, prog);
   save();
   const prefs = settings.get();
-  narrator.mixWithMusic = prefs.mixWithMusic;
+  narrator.setMusic(prefs.music);
+  narrator.setVolume(prefs.volume);
 
   const train = tour.mode === 'train';
   const noun = tour.stopNoun ?? 'stop';
@@ -62,10 +63,11 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
   const bannerEl = h('div', { class: 'banner', hidden: true, role: 'status', 'aria-live': 'assertive' });
   const nextEl = h('div', { class: 'next-card' });
   const playerEl = h('div', { class: 'player' });
+  const soundEl = soundControls();
   const listEl = h('div', { class: 'stops-list', id: 'stops-list' });
   const handle = h('button', { class: 'sheet-handle', 'aria-expanded': 'false', 'aria-controls': 'stops-list' },
     h('span', { class: 'grabber', 'aria-hidden': 'true' }), h('span', { class: 'sr-only' }, 'All stops'));
-  const sheetEl = h('section', { class: 'walk-sheet', 'aria-label': 'Tour controls' }, handle, bannerEl, nextEl, playerEl, listEl);
+  const sheetEl = h('section', { class: 'walk-sheet', 'aria-label': 'Tour controls' }, handle, bannerEl, nextEl, playerEl, soundEl, listEl);
   const demoBar = demo ? h('div', { class: 'demo-bar' }) : null;
 
   const view = h('div', { class: 'walk', style: `--accent:${tour.accent}` },
@@ -220,6 +222,36 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
     playerEl.classList.toggle('blocked', s.blocked);
   }
 
+  /** Always-visible sound row: story volume, and what your own music does during a story. */
+  function soundControls() {
+    const vol = h('input', { type: 'range', min: '0', max: '1', step: '0.05', value: String(prefs.volume), 'aria-label': 'Story volume' });
+    const paint = () => vol.style.setProperty('--pct', `${Number(vol.value) * 100}%`);
+    paint();
+    vol.addEventListener('input', () => {
+      prefs.volume = Number(vol.value);
+      narrator.setVolume(prefs.volume);
+      paint();
+    });
+    vol.addEventListener('change', () => settings.set(prefs));
+    const modes: [MusicMode, string][] = [['lower', 'Quieter'], ['full', 'Full'], ['pause', 'Pause']];
+    const seg = h('div', { class: 'seg', role: 'radiogroup', 'aria-label': 'Your music during a story' },
+      ...modes.map(([m, label]) => {
+        const input = h('input', { type: 'radio', name: 'music-mode', value: m, checked: prefs.music === m });
+        input.addEventListener('change', () => {
+          prefs.music = m;
+          narrator.setMusic(m);
+          settings.set(prefs);
+        });
+        return h('label', null, input, h('span', null, label));
+      }));
+    return h('div', { class: 'sound' },
+      h('div', { class: 'sound-row' }, h('span', { class: 'sound-label', html: icons.volume, title: 'Story volume' }), vol),
+      h('div', { class: 'sound-row' },
+        h('span', { class: 'sound-label', html: icons.music, title: 'Your music during a story' }),
+        h('span', { class: 'sound-text' }, 'Your music', !Narrator.canMixWithMusic && h('small', null, 'Needs Safari on iPhone')),
+        seg));
+  }
+
   let lastListRender = 0;
   function renderList() {
     lastListRender = Date.now();
@@ -244,14 +276,10 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
     };
     const auto = h('input', { type: 'checkbox', role: 'switch', checked: prefs.autoplay });
     auto.addEventListener('change', () => { prefs.autoplay = auto.checked; settings.set(prefs); });
-    const mix = h('input', { type: 'checkbox', role: 'switch', checked: prefs.mixWithMusic });
-    mix.addEventListener('change', () => { prefs.mixWithMusic = narrator.mixWithMusic = mix.checked; settings.set(prefs); });
     listEl.replaceChildren(
       h('ol', null, ...(tour.intro ? [row(tour.intro, null)] : []), ...stops.map((s, i) => row(s, i))),
       h('div', { class: 'list-footer' },
         h('label', { class: 'switch' }, auto, h('span', { class: 'track' }), h('span', null, 'Play automatically on arrival')),
-        Narrator.canMixWithMusic && h('label', { class: 'switch' }, mix, h('span', { class: 'track' }),
-          h('span', null, 'Keep my music playing', h('small', null, 'Spotify or Apple Music gets quieter during each story instead of stopping'))),
         h('button', { class: 'text-link', onclick: restart }, 'Restart tour')),
     );
   }

@@ -1,5 +1,8 @@
 import type { Clip } from './types';
 
+/** What the listener's own music (Spotify, Apple Music…) does while a story plays. */
+export type MusicMode = 'pause' | 'lower' | 'full';
+
 export interface PlayerState {
   clip: Clip | null;
   playing: boolean;
@@ -42,22 +45,47 @@ export class Narrator {
   artwork = '';
   album = '';
   /**
-   * Let the listener's own music (Spotify, Apple Music…) keep playing: it's
-   * lowered while a story plays, like navigation directions, instead of paused.
-   * Uses the Audio Session API (Safari 16.4+); elsewhere it does nothing.
+   * The listener's own music keeps playing by default: lowered while a story
+   * plays, like navigation directions ('lower'), left as is ('full'), or
+   * paused ('pause'). Uses the Audio Session API (Safari 16.4+); elsewhere the
+   * browser decides.
    */
-  mixWithMusic = false;
+  private music: MusicMode = 'lower';
+  private volume = 1;
+  private gain: GainNode | null = null;
 
   static get canMixWithMusic(): boolean {
     return 'audioSession' in navigator;
+  }
+
+  setMusic(mode: MusicMode) {
+    this.music = mode;
+    this.setSession(this.state.playing);
   }
 
   private setSession(speaking: boolean) {
     const session = (navigator as any).audioSession;
     if (!session) return;
     try {
-      session.type = !this.mixWithMusic ? 'auto' : speaking ? 'transient' : 'ambient';
+      session.type = this.music === 'pause' ? 'auto' : this.music === 'lower' && speaking ? 'transient' : 'ambient';
     } catch { /* unsupported type */ }
+  }
+
+  /** Story volume, 0–1. Also scales the arrival chime. */
+  setVolume(v: number) {
+    this.volume = v;
+    this.el.volume = v;
+    // iOS ignores <audio>.volume (it stays 1): route through a Web Audio gain instead.
+    if (!this.gain && Math.abs(this.el.volume - v) > 0.01) {
+      this.ensureContext();
+      if (this.ctx) {
+        try {
+          this.gain = this.ctx.createGain();
+          this.ctx.createMediaElementSource(this.el).connect(this.gain).connect(this.ctx.destination);
+        } catch { this.gain = null; }
+      }
+    }
+    if (this.gain) this.gain.gain.value = v;
   }
 
   constructor() {
@@ -213,7 +241,7 @@ export class Narrator {
     if (!ctx || ctx.state !== 'running') return Promise.resolve();
     const now = ctx.currentTime;
     const out = ctx.createGain();
-    out.gain.value = 0.35;
+    out.gain.value = 0.35 * this.volume;
     out.connect(ctx.destination);
     const strike = (freq: number, at: number) => {
       for (const [mult, amp, decay] of [[1, 1, 2.2], [2.76, 0.35, 1.2], [5.4, 0.12, 0.6]]) {
@@ -243,6 +271,7 @@ export class Narrator {
     const u = new SpeechSynthesisUtterance(clip.text);
     u.lang = 'en-GB';
     u.rate = 0.95;
+    u.volume = this.volume;
     this.speaking = true;
     u.onend = () => {
       if (!this.speaking) return;
