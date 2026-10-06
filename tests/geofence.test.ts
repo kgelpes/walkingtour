@@ -45,6 +45,41 @@ describe('tour data', () => {
   });
 });
 
+/** Metres from p to the nearest segment of a [lat, lng] polyline (local flat projection). */
+function distanceToPath(p: { lat: number; lng: number }, path: [number, number][]): number {
+  const k = Math.cos((p.lat * Math.PI) / 180) * 111_320;
+  const xy = ([lat, lng]: [number, number]) => [(lng - p.lng) * k, (lat - p.lat) * 110_574];
+  let best = Infinity;
+  for (let i = 0; i < path.length - 1; i++) {
+    const [ax, ay] = xy(path[i]);
+    const [bx, by] = xy(path[i + 1]);
+    const dx = bx - ax, dy = by - ay;
+    const t = Math.max(0, Math.min(1, -(ax * dx + ay * dy) / (dx * dx + dy * dy || 1)));
+    best = Math.min(best, Math.hypot(ax + t * dx, ay + t * dy));
+  }
+  return best;
+}
+
+describe('every tour', () => {
+  const index = JSON.parse(readFileSync(new URL('../public/tours/index.json', import.meta.url), 'utf8')).tours as { id: string; stops: number }[];
+  for (const entry of index) {
+    it(`${entry.id}: complete data, audio and separated fences`, () => {
+      const t: Tour = JSON.parse(readFileSync(new URL(`../public/tours/${entry.id}/tour.json`, import.meta.url), 'utf8'));
+      expect(t.stops.length).toBe(entry.stops);
+      expect(new Set(t.stops.map((s) => s.id)).size).toBe(t.stops.length);
+      for (const c of [t.intro!, ...t.stops]) {
+        expect(c.audio, c.id).toMatch(/^audio\/.+\.mp3$/);
+        expect(c.duration, c.id).toBeGreaterThan(15);
+      }
+      for (const a of t.stops)
+        for (const b of t.stops)
+          if (a !== b) expect(distance(a, b), `${a.id}↔${b.id}`).toBeGreaterThan(a.radius + b.radius > 2000 ? a.radius + b.radius : Math.max(a.radius, b.radius) + 10);
+      // Train triggers must sit on the track.
+      if (t.path) for (const s of t.stops) expect(distanceToPath(s, t.path), s.id).toBeLessThan(150);
+    });
+  }
+});
+
 describe('Geofence', () => {
   it('starts with the first stop as next', () => {
     expect(new Geofence(tour.stops).next()?.id).toBe('niomon');

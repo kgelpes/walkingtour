@@ -10,7 +10,23 @@
       "stops": 9,
       "lat": 34.9948,
       "lng": 135.7845,
-      "accent": "#d0402b"
+      "accent": "#d0402b",
+      "art": "pagoda"
+    },
+    {
+      "id": "shinkansen-kyoto-tokyo",
+      "title": "Shinkansen to Tokyo",
+      "jp": "東海道新幹線",
+      "city": "Kyoto → Tokyo",
+      "tagline": "The view from seat E",
+      "durationMin": 135,
+      "stops": 18,
+      "lat": 34.9858,
+      "lng": 135.7588,
+      "accent": "#1f5fae",
+      "art": "fuji",
+      "mode": "train",
+      "stopNoun": "view"
     }
   ]
 }

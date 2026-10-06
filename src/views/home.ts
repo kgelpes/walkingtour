@@ -1,6 +1,6 @@
 import { h } from '../dom';
-import { distance, formatDistance } from '../geo';
-import { icons, pagodaArt } from '../icons';
+import { distance, formatDistance, formatDuration } from '../geo';
+import { icons, tourArt } from '../icons';
 import { loadIndex, progress } from '../store';
 
 export async function homeView(root: HTMLElement) {
@@ -12,14 +12,14 @@ export async function homeView(root: HTMLElement) {
     const started = p.done.length > 0 && p.done.length < t.stops;
     const dist = h('span', { class: 'chip-dist', hidden: true });
     const card = h('a', { class: 'tour-card', href: `#/tour/${t.id}`, style: `--accent:${t.accent}` },
-      h('div', { class: 'tour-card-art', html: pagodaArt }),
+      h('div', { class: 'tour-card-art', html: tourArt(t.art) }),
       h('div', { class: 'tour-card-body' },
         h('div', { class: 'eyebrow' }, t.city, dist),
         h('h2', null, t.title, t.jp && h('span', { class: 'jp' }, t.jp)),
         h('p', null, t.tagline),
         h('div', { class: 'meta' },
-          h('span', { html: icons.clock }), `${t.durationMin} min`,
-          h('span', { class: 'dot' }), `${t.stops} stops`,
+          h('span', { html: icons.clock }), formatDuration(t.durationMin),
+          h('span', { class: 'dot' }), `${t.stops} ${t.stopNoun ?? 'stop'}s`,
           started && h('span', { class: 'dot' }), started && h('strong', null, `${p.done.length}/${t.stops} done`)),
       ),
     );
@@ -30,12 +30,12 @@ export async function homeView(root: HTMLElement) {
     h('main', { class: 'home' },
       h('header', { class: 'home-head' },
         h('div', { class: 'brand' }, h('span', { class: 'brand-mark', html: icons.headphones }), 'Walking Tours'),
-        h('h1', null, 'Audio guides that play themselves as you walk.'),
+        h('h1', null, 'Audio guides that play themselves as you go.'),
       ),
       h('section', { class: 'tour-list', 'aria-label': 'Tours' }, ...cards.map((c) => c.card)),
       h('div', { class: 'soon' },
         h('span', { html: icons.sparkle }),
-        h('div', null, h('strong', null, 'More tours coming'), h('p', null, 'New walks are added here as they’re recorded.'))),
+        h('div', null, h('strong', null, 'More tours coming'), h('p', null, 'New walks and rides are added here as they’re recorded.'))),
     ),
   );
 

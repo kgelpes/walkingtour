@@ -18,12 +18,21 @@ export class TourMap {
   onStopTap?: (stop: Stop) => void;
   onMapTap?: (p: LatLng) => void;
 
-  constructor(el: HTMLElement, private stops: Stop[], private bottomInset: () => number) {
+  /** Zoom used when following the user or focusing a stop. */
+  private closeZoom: number;
+
+  constructor(
+    el: HTMLElement,
+    private stops: Stop[],
+    private bottomInset: () => number,
+    opts: { path?: [number, number][]; closeZoom?: number } = {},
+  ) {
+    this.closeZoom = opts.closeZoom ?? 18;
     this.map = L.map(el, {
       zoomControl: false,
       attributionControl: true,
       maxZoom: 20,
-      minZoom: 13,
+      minZoom: opts.path ? 5 : 13,
       zoomSnap: 0.25,
       tapTolerance: 20,
     });
@@ -37,13 +46,18 @@ export class TourMap {
     }).addTo(this.map);
 
     const pts = stops.map((s) => [s.lat, s.lng] as L.LatLngTuple);
-    const required = stops.filter((s) => !s.optional).map((s) => [s.lat, s.lng] as L.LatLngTuple);
-    L.polyline(required, { className: 'route-line', interactive: false }).addTo(this.map);
-    stops.forEach((s, i) => {
-      if (!s.optional) return;
-      const prev = stops[i - 1];
-      if (prev) L.polyline([[prev.lat, prev.lng], [s.lat, s.lng]], { className: 'route-line optional', interactive: false }).addTo(this.map);
-    });
+    if (opts.path) {
+      L.polyline(opts.path, { className: 'route-line track', interactive: false }).addTo(this.map);
+      pts.push(...opts.path);
+    } else {
+      const required = stops.filter((s) => !s.optional).map((s) => [s.lat, s.lng] as L.LatLngTuple);
+      L.polyline(required, { className: 'route-line', interactive: false }).addTo(this.map);
+      stops.forEach((s, i) => {
+        if (!s.optional) return;
+        const prev = stops[i - 1];
+        if (prev) L.polyline([[prev.lat, prev.lng], [s.lat, s.lng]], { className: 'route-line optional', interactive: false }).addTo(this.map);
+      });
+    }
 
     stops.forEach((s, i) => {
       const m = L.marker([s.lat, s.lng], { icon: this.icon(i, 'todo', s), keyboard: true, title: s.title, riseOnHover: true })
@@ -115,7 +129,7 @@ export class TourMap {
   setFollowing(f: boolean) {
     this.following = f;
     this.onFollowChange?.(f);
-    if (f && this.user) this.pan(this.user.getLatLng(), Math.max(this.map.getZoom(), 18));
+    if (f && this.user) this.pan(this.user.getLatLng(), Math.max(this.map.getZoom(), this.closeZoom));
   }
 
   get isFollowing() {
@@ -133,7 +147,7 @@ export class TourMap {
 
   focusStop(s: Stop) {
     this.setFollowing(false);
-    this.pan([s.lat, s.lng], Math.max(this.map.getZoom(), 18));
+    this.pan([s.lat, s.lng], Math.max(this.map.getZoom(), this.closeZoom));
   }
 
   invalidate() {

@@ -201,6 +201,7 @@ svg { display: block; flex-shrink: 0; }
 .walk .leaflet-bottom { bottom: calc(var(--sheet-h, 240px) - 4px); transition: bottom 0.3s; }
 .route-line { stroke: var(--accent); stroke-width: 4; stroke-dasharray: 2 9; stroke-linecap: round; fill: none; opacity: 0.8; }
 .route-line.optional { opacity: 0.45; }
+.route-line.track { stroke-dasharray: none; stroke-width: 5; opacity: 0.55; }
 
 .topbar {
   position: absolute; top: 0; left: 0; right: 0; z-index: 500; pointer-events: none;

@@ -1,7 +1,7 @@
 import { go, narrator, primeFromGesture } from '../app';
 import { h, sheet, toast } from '../dom';
 import { formatTime } from '../geo';
-import { icons, pagodaArt } from '../icons';
+import { icons, tourArt } from '../icons';
 import { estimateMB, offlineStatus, saveOffline } from '../offline';
 import { loadTour, progress, tourBase } from '../store';
 import type { Clip, Stop } from '../types';
@@ -10,6 +10,7 @@ import { transcript } from './transcript';
 export async function overviewView(root: HTMLElement, id: string) {
   const tour = await loadTour(id);
   const base = tourBase(id);
+  const train = tour.mode === 'train';
   document.title = `${tour.title} · Walking Tours`;
   narrator.setBase(base);
   const p = progress.get(id);
@@ -76,17 +77,19 @@ export async function overviewView(root: HTMLElement, id: string) {
   root.append(
     h('main', { class: 'overview', style: `--accent:${tour.accent}` },
       h('div', { class: 'hero' },
-        h('div', { class: 'hero-art', html: pagodaArt }),
+        h('div', { class: 'hero-art', html: tourArt(tour.art) }),
         h('button', { class: 'icon-btn floating', 'aria-label': 'All tours', html: icons.back, onclick: () => go('/') }),
       ),
       h('section', { class: 'overview-body' },
-        h('div', { class: 'eyebrow' }, `${tour.city} · Audio walking tour`),
+        h('div', { class: 'eyebrow' }, `${tour.city} · ${train ? 'Audio train ride' : 'Audio walking tour'}`),
         h('h1', null, tour.title, tour.jp && h('span', { class: 'jp' }, tour.jp)),
         h('p', { class: 'tagline' }, tour.tagline),
         h('ul', { class: 'stats' },
-          h('li', null, h('strong', null, `${tour.durationMin}`), 'min'),
-          h('li', null, h('strong', null, `${tour.stops.length}`), 'stops'),
-          h('li', null, h('strong', null, `${(tour.distanceM / 1000).toFixed(1)}`), 'km'),
+          tour.durationMin >= 90
+            ? h('li', null, h('strong', null, `${Math.floor(tour.durationMin / 60)}h${String(tour.durationMin % 60).padStart(2, '0')}`), 'journey')
+            : h('li', null, h('strong', null, `${tour.durationMin}`), 'min'),
+          h('li', null, h('strong', null, `${tour.stops.length}`), `${tour.stopNoun ?? 'stop'}s`),
+          h('li', null, h('strong', null, `${(tour.distanceM / 1000).toFixed(tour.distanceM >= 100_000 ? 0 : 1)}`), 'km'),
           h('li', null, h('strong', null, `${Math.round(totalAudio / 60)}`), 'min audio'),
         ),
         h('div', { class: 'cta' },
@@ -99,13 +102,23 @@ export async function overviewView(root: HTMLElement, id: string) {
         ),
         h('p', { class: 'desc' }, tour.description),
         h('ul', { class: 'how' },
-          h('li', null, h('span', { html: icons.headphones }), h('div', null, h('strong', null, 'Bring headphones'), 'Or listen through the speaker at low volume.')),
-          h('li', null, h('span', { html: icons.pin }), h('div', null, h('strong', null, 'Just walk'), 'Each story starts by itself with a soft chime when you arrive.')),
-          h('li', null, h('span', { html: icons.sun }), h('div', null, h('strong', null, 'Keep the screen on'), 'Your phone can only follow you while the page is open.')),
+          ...(train
+            ? [
+                h('li', null, h('span', { html: icons.pin }), h('div', null, h('strong', null, 'Book seat E'), 'On a Nozomi to Tokyo, E is the window on the mountain side, the one that faces Mount Fuji.')),
+                h('li', null, h('span', { html: icons.headphones }), h('div', null, h('strong', null, 'Headphones in'), 'Each story starts by itself with a soft chime, about a minute before the sight.')),
+                h('li', null, h('span', { html: icons.sun }), h('div', null, h('strong', null, 'Screen on, phone on the table'), 'GPS works through the window. Save for offline first: there are lots of tunnels.')),
+              ]
+            : [
+                h('li', null, h('span', { html: icons.headphones }), h('div', null, h('strong', null, 'Bring headphones'), 'Or listen through the speaker at low volume.')),
+                h('li', null, h('span', { html: icons.pin }), h('div', null, h('strong', null, 'Just walk'), 'Each story starts by itself with a soft chime when you arrive.')),
+                h('li', null, h('span', { html: icons.sun }), h('div', null, h('strong', null, 'Keep the screen on'), 'Your phone can only follow you while the page is open.')),
+              ]),
         ),
         h('button', { class: 'demo-link', onclick: () => start({ demo: true }) },
           h('span', { html: icons.walk }),
-          h('div', null, h('strong', null, 'Not in Kyoto yet?'), 'Try a demo walk — the app simulates walking the route.'),
+          train
+            ? h('div', null, h('strong', null, 'Not on the train yet?'), 'Try a demo ride — the app simulates the journey at up to 30× speed.')
+            : h('div', null, h('strong', null, 'Not in Kyoto yet?'), 'Try a demo walk — the app simulates walking the route.'),
           h('span', { html: icons.chevronRight })),
         h('h3', { class: 'section-title' }, 'Stops'),
         h('ol', { class: 'stop-preview' },

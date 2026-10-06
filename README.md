@@ -2,7 +2,10 @@
 
 **Live:** https://kgelpes.github.io/walkingtour/
 
-GPS-triggered audio walking tours, as an installable web app (PWA). The first tour is **Kiyomizu-dera, Kyoto**: 9 stops and about 14 minutes of narration voiced with ElevenLabs.
+GPS-triggered audio tours, as an installable web app (PWA):
+
+- **Kiyomizu-dera, Kyoto**: a walking tour with 9 stops and about 14 minutes of narration.
+- **Shinkansen to Tokyo**: the view from seat E of a Nozomi, Kyoto → Tokyo. 18 views, each announced about a minute before it appears, voiced with ElevenLabs v4 and its expressive tags (`[excited]`, `[whispers]`, …).
 
 Walk around, and each story starts by itself with a soft chime when you arrive at a stop. There's no app store install and no account. It also works offline once saved.
 
@@ -41,3 +44,13 @@ Geolocation needs HTTPS on phones. To test on a phone, deploy it (see below) or 
 4. `npm test` checks that every stop has audio and that the fences don't overlap.
 
 The API key is only used at build time on your machine. It never ships to the browser.
+
+## Add a train ride
+
+Train tours set `"mode": "train"` and carry the real track as `path`. Triggers sit *ahead* of each sight, since at 285 km/h a minute is about 5 km.
+
+1. Find the line's OSM route relation (e.g. 9802494 is the Nozomi, Shin-Osaka → Tokyo) and build the track:
+   `python3 scripts/osm-route.py 9802494 京都 東京 > route.json` (prints the length; check it against the official figure).
+2. Get the km of each sight with `--km lat,lng`. Then place its trigger about a minute earlier with `--at <km>`, and use a radius of 1–2 km.
+3. Use `"geofence": {"maxAccuracy": 300}`: GPS through a train window is coarser.
+4. `npm test` checks that every trigger is on the track and that no two trigger zones overlap.

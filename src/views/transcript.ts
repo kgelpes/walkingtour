@@ -7,7 +7,11 @@ import type { Clip } from '../types';
  * paragraph being spoken is highlighted (estimated from character position).
  */
 export function transcript(clip: Clip): HTMLElement {
-  const paras = clip.text.split(/\n\s*\n/).map((t) => t.trim()).filter(Boolean);
+  // Delivery tags like [excited] are for the voice, not the reader.
+  const paras = clip.text
+    .split(/\n\s*\n/)
+    .map((t) => t.replace(/\[[a-z ]+\]\s*/gi, '').replace(/\s{2,}/g, ' ').trim())
+    .filter(Boolean);
   const total = paras.reduce((a, t) => a + t.length, 0);
   let acc = 0;
   const ends = paras.map((t) => (acc += t.length) / total);

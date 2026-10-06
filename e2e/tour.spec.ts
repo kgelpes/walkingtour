@@ -147,3 +147,22 @@ test('works offline after saving', async ({ page, context }) => {
   await expect.poll(async () => (await player(page)).time, { timeout: 10_000 }).toBeGreaterThan(30.2);
   await context.setOffline(false);
 });
+
+test('train tour: demo ride keeps moving and plays the first view', async ({ page }) => {
+  await page.goto('./');
+  await page.getByRole('link', { name: /Shinkansen to Tokyo/ }).click();
+  await expect(page.getByText('Book seat E')).toBeVisible();
+  await page.getByRole('button', { name: /demo ride/ }).click();
+  await expect(page.locator('.next-card')).toContainText('Next view · 1 of 18');
+  await expect(page.locator('.next-line')).toContainText(/km · (about|under)/);
+  // The train doesn't wait for the welcome: it reaches Lake Biwa while it's playing, and queues it.
+  await page.getByRole('button', { name: '30×' }).click();
+  await expect(page.locator('.banner')).toContainText('Lake Biwa Country', { timeout: 20_000 });
+  expect((await player(page)).id).toBe('intro');
+  await finishClip(page);
+  await expect.poll(async () => (await player(page)).id, { timeout: 10_000 }).toBe('biwa');
+  // Delivery tags are hidden from the read-along text.
+  await page.getByRole('button', { name: 'Read along' }).click();
+  await expect(page.locator('.transcript')).toContainText('out of the tunnels');
+  await expect(page.locator('.transcript')).not.toContainText('[excited]');
+});

@@ -17,8 +17,20 @@ export interface Stop extends Clip {
   optional?: boolean;
 }
 
+export type TourMode = 'walk' | 'train';
+
 export interface Tour {
   id: string;
+  /** 'train' tours trigger well ahead of each sight and move at train speed. */
+  mode?: TourMode;
+  /** Word for a stop in the UI ("stop", "view"). */
+  stopNoun?: string;
+  /** Artwork key (see icons.ts). */
+  art?: string;
+  /** The actual route as [lat, lng] points, when it isn't a straight line between stops. */
+  path?: [number, number][];
+  /** Geofence tuning, e.g. looser accuracy on a train. */
+  geofence?: { maxAccuracy?: number; confirmFixes?: number; outOfOrderFixes?: number };
   title: string;
   jp?: string;
   city: string;
@@ -42,6 +54,9 @@ export interface TourSummary {
   lat: number;
   lng: number;
   accent: string;
+  art?: string;
+  mode?: TourMode;
+  stopNoun?: string;
 }
 
 export interface Fix {

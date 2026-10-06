@@ -53,3 +53,18 @@ export function formatTime(s: number): string {
   const r = Math.floor(s % 60);
   return `${m}:${r.toString().padStart(2, '0')}`;
 }
+
+/** Time to cover `m` at `speed` m/s (train tours), e.g. "about 4 min". */
+export function formatEta(m: number, speed: number): string {
+  const s = m / Math.max(speed, 1);
+  if (s < 50) return 'under a minute';
+  const min = Math.round(s / 60);
+  if (min < 60) return `about ${min} min`;
+  return `about ${Math.floor(min / 60)} h ${min % 60} min`;
+}
+
+export function formatDuration(min: number): string {
+  if (min < 90) return `${min} min`;
+  const h = Math.floor(min / 60);
+  return `${h} h ${min % 60 ? `${min % 60} min` : ''}`.trim();
+}

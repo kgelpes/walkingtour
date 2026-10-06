@@ -1,0 +1,1662 @@
+{
+  "id": "shinkansen-kyoto-tokyo",
+  "title": "Shinkansen to Tokyo",
+  "jp": "東海道新幹線",
+  "city": "Kyoto → Tokyo",
+  "tagline": "The view from seat E",
+  "description": "Two hours and a bit, 476 kilometres, one window. Castles, battlefields, tea fields, Mount Fuji and Tokyo Tower, each announced about a minute before it appears outside seat E of a Nozomi heading for Tokyo.",
+  "mode": "train",
+  "durationMin": 135,
+  "distanceM": 476000,
+  "accent": "#1f5fae",
+  "art": "fuji",
+  "stopNoun": "view",
+  "geofence": {
+    "maxAccuracy": 300,
+    "confirmFixes": 2,
+    "outOfOrderFixes": 3
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "voiceId": "bu5eKETbFKC8G702EAU4",
+    "name": "Liam",
+    "model": "eleven_v4",
+    "settings": {
+      "stability": 0.35,
+      "similarity_boost": 0.8
+    }
+  },
+  "intro": {
+    "id": "intro",
+    "title": "All aboard",
+    "text": "[excited] Hey there, and welcome aboard the Tōkaidō Shinkansen! I'm going to be your window-side companion all the way from Kyoto to Tokyo.\n\nFirst things first: you're in seat E. Great choice. On this line, seat E is always on the mountain side of the train. That's the side that gets Mount Fuji. [whispers] Seat A gets the ocean. Fine. But they don't get Fuji.\n\nHere's how this works. Keep this screen on, put your phone on the table, and pop your headphones in. About a minute before each sight appears, you'll hear a soft chime and I'll tell you where to look. Usually, it's your window. Every now and then, I'll ask you to sneak a peek across the aisle.\n\nThis first part of the trip goes through a few tunnels, so relax. Grab a coffee, unwrap your ekiben, and I'll find you when we're out the other side. [chuckles] Fun fact: the first bullet trains started running on this exact line in 1964, just in time for the Tokyo Olympics. It was the world's first high-speed railway.\n\nAlright. Seat back, window clear. Let's go!",
+    "audio": "audio/intro.07d9dc4132.mp3",
+    "duration": 56
+  },
+  "stops": [
+    {
+      "id": "biwa",
+      "title": "Lake Biwa Country",
+      "jp": "近江",
+      "teaser": "Japan's oldest lake, and a mountain with a centipede problem",
+      "lat": 34.96952,
+      "lng": 135.91041,
+      "radius": 2000,
+      "km": 14,
+      "text": "[excited] And we're out of the tunnels! Welcome to Ōmi, the old name for this whole basin.\n\nSomewhere out your window, a few kilometres off, is Lake Biwa: the biggest lake in Japan, and one of the oldest lakes on Earth, around four million years old. You probably won't see the water from here, it's hiding behind all those rooftops and rice fields. But it's there, and it supplies drinking water to about fourteen million people back in Kyoto and Osaka. [chuckles] So, in a way, you've already met.\n\nThis is also the home of Ōmi beef, one of Japan's three great wagyu, and of the Ōmi merchants, who walked the whole country selling goods centuries before anyone thought of a bullet train.\n\nNow, a small detour across the aisle. In a couple of minutes, the people in seat A get a neat little cone-shaped mountain: Mount Mikami, the \"Fuji of Ōmi.\" Legend says a giant centipede once coiled around it seven and a half times, until a hero shot it with an arrow. [whispers] Don't tell seat A. They think they got the good side. [laughs] They didn't. You'll see why in about an hour and a half.",
+      "audio": "audio/biwa.fe037579b9.mp3",
+      "duration": 63
+    },
+    {
+      "id": "hikone",
+      "title": "Hikone Castle",
+      "jp": "彦根城",
+      "teaser": "One of only five original castles that are National Treasures",
+      "lat": 35.23652,
+      "lng": 136.26524,
+      "radius": 2000,
+      "km": 59,
+      "text": "Okay, eyes on your window for the next minute or so. [excited] We're looking for a castle!\n\nUp on a wooded hill, a couple of kilometres away, sits Hikone Castle. Finished in 1622, it's one of only five castles in all of Japan that are designated National Treasures, and one of the few that are actually original. No concrete rebuild, no elevator. Real wood, real stone, four hundred years old.\n\nIt belonged to the Ii clan, some of the shogun's most loyal generals, who dressed their whole army in blood-red armour. [chuckles] Subtle.\n\nToday the castle's biggest celebrity is a cat. Hikonyan: a round white cat in a samurai helmet, and one of the most famous mascots in Japan. Legend has it a cat once beckoned a lord to shelter in a temple, just before lightning struck where he'd been standing.\n\nIf you spot a small white keep on a hilltop, that's it. If not, the trees win this round. [laughs] There are plenty more castles where that came from.\n\nNext up: the mountain that holds a world record for snow.",
+      "audio": "audio/hikone.bf2ef4e7c0.mp3",
+      "duration": 62
+    },
+    {
+      "id": "sekigahara",
+      "title": "Mt Ibuki & Sekigahara",
+      "jp": "伊吹山・関ヶ原",
+      "teaser": "A world record for snow, and the battle that made the shoguns",
+      "lat": 35.36473,
+      "lng": 136.38729,
+      "radius": 2000,
+      "km": 80,
+      "text": "See that big, broad mountain filling your window? That's Mount Ibuki, almost fourteen hundred metres tall. [excited] And it holds a world record. In February 1927, the snow on its summit was measured at eleven point eight two metres deep. That's about four storeys of snow. Still the deepest ever recorded at a weather station, anywhere on Earth.\n\nAnd the snow doesn't stop at the mountain. This valley we're about to enter is the snowiest stretch of the whole line. In winter, you might notice sprinklers spraying water along the tracks. That's on purpose: wet snow doesn't stick and freeze to the train. [chuckles] Fighting snow with water. Very Zen.\n\nBut this valley is famous for something much bigger. [dramatic] Sekigahara. On a foggy morning in October 1600, more than one hundred and fifty thousand samurai met right here, in this narrow gap between the mountains. By the afternoon, Tokugawa Ieyasu had won. His family would rule Japan for the next two hundred and sixty years.\n\n[whispers] You're crossing the battlefield. Right now. At two hundred and eighty-five kilometres an hour. [laughs] The samurai would be so confused.",
+      "audio": "audio/sekigahara.11b92ef147.mp3",
+      "duration": 70
+    },
+    {
+      "id": "rivers",
+      "title": "The Three Rivers",
+      "jp": "木曽三川",
+      "teaser": "Three great rivers, and fishermen who work with birds",
+      "lat": 35.34962,
+      "lng": 136.56427,
+      "radius": 2000,
+      "km": 97,
+      "text": "Get ready for a little bit of water! Over the next few minutes, we cross three big rivers, one after another: the Ibi, the Nagara, and the Kiso. Together they're called the Kiso Sansen, the Three Rivers of Kiso.\n\nFor centuries they flooded this plain so often that the villages built ring-shaped levees around themselves, like little islands. Some of them are still out there.\n\n[excited] And the Nagara River, a little way upstream from here in Gifu, is home to one of the most magical things you can see in Japan. Ukai: cormorant fishing. On summer nights, fishing masters stand in wooden boats lit by burning baskets of fire, guiding a team of diving birds on long cords. The birds catch sweetfish, and the masters gently collect them.\n\nThe tradition goes back well over a thousand years. And the Nagara fishing masters still hold an official title from the Imperial Household. [chuckles] Imagine having \"imperial bird fisherman\" on your business card.\n\nWe're getting close to Nagoya now. Keep watching your window as the city starts to rise.",
+      "audio": "audio/rivers.c4090ac3af.mp3",
+      "duration": 61
+    },
+    {
+      "id": "nagoya",
+      "title": "Nagoya",
+      "jp": "名古屋",
+      "teaser": "Golden fish on the castle roof, and very serious fried chicken wings",
+      "lat": 35.19575,
+      "lng": 136.86384,
+      "radius": 1800,
+      "km": 131,
+      "text": "[excited] Nagoya! Japan's fourth-biggest city, and the heart of its car and aerospace industries.\n\nAs we slow down, watch your window. If the buildings part, a couple of kilometres away you might catch the green roofs of Nagoya Castle. On top sit two golden shachihoko: mythical fish with the heads of tigers, covered in real gold leaf. They're supposed to protect the castle from fire by summoning rain. [chuckles] The castle did burn down in 1945, so... let's say results may vary.\n\nThe twin glass towers right next to the station are the JR Central Towers, headquarters of the company running this very train.\n\nAnd the food! Nagoya people will tell you it's the best in Japan. Miso katsu: pork cutlet drowning in sweet red miso. Tebasaki: peppery fried chicken wings. And hitsumabushi: grilled eel on rice, eaten three different ways from the same bowl. [whispers] If you've got a long layover here someday, that's what you're having.\n\nWe'll stop for about a minute. Then, onward east, into samurai and car country.",
+      "audio": "audio/nagoya.17675f575b.mp3",
+      "duration": 61
+    },
+    {
+      "id": "mikawa",
+      "title": "Samurai & Toyota Country",
+      "jp": "三河",
+      "teaser": "Where the first shogun was born, and where Toyota builds cars",
+      "lat": 35.09088,
+      "lng": 136.929,
+      "radius": 2000,
+      "km": 145,
+      "text": "We're now in Mikawa, the eastern part of Aichi. And this flat, quiet farmland has produced two of the most powerful names in Japanese history.\n\nThe first is Tokugawa Ieyasu, the winner of Sekigahara, born in 1543 at Okazaki Castle, just out your window side. Okazaki is also famous for Hatchō miso: a dark, intense miso aged in giant cedar barrels, under a pyramid of stones. Ieyasu supposedly loved the stuff.\n\nThe second name? [excited] Toyota! Inland on your side, beyond the fields, is a city that used to be called Koromo. In 1959, it renamed itself after the company that made it rich. [laughs] So yes, there is a real city in Japan named after a car company. Toyota City.\n\nOne more fun fact. The town we pass around here, Anjō, was so successful at modern farming in the 1920s that it was nicknamed \"Japan's Denmark.\" [chuckles] I promise you, it doesn't look like Denmark.\n\nComing up: a giant lake full of eels.",
+      "audio": "audio/mikawa.b0b92bcb55.mp3",
+      "duration": 61
+    },
+    {
+      "id": "hamana",
+      "title": "Lake Hamana",
+      "jp": "浜名湖",
+      "teaser": "Eels, and a snack famous for being eaten at night",
+      "lat": 34.73156,
+      "lng": 137.41704,
+      "radius": 2000,
+      "km": 207,
+      "text": "Water! [excited] That's Lake Hamana, opening up on your window side. It's a brackish lake: fresh water from the hills mixes with salt water from the ocean, flowing in through a narrow channel. Across the aisle, seat A gets the ocean side and a big red torii gate standing in the water at Bentenjima.\n\nBut your side has the lake, and the lake has eels. Lake Hamana has been farming unagi since the late eighteen-hundreds, and grilled eel is the local obsession.\n\n[chuckles] Which brings us to Japan's most mysterious souvenir: Unagi Pie. A crunchy butter pastry made with eel extract. For decades, its slogan has been \"the snack for the night.\" [laughs] The company says it was about families sharing it together at dinner time. People have been giggling about it ever since.\n\nLook out for little fishing boats, oyster rafts, and the wide flat water stretching inland toward the mountains.\n\nNext stop on our journey: the city of music.",
+      "audio": "audio/hamana.c12de1441a.mp3",
+      "duration": 56
+    },
+    {
+      "id": "hamamatsu",
+      "title": "Hamamatsu & the Tenryū",
+      "jp": "浜松・天竜川",
+      "teaser": "A skyscraper shaped like a harmonica, in the city of pianos",
+      "lat": 34.6935,
+      "lng": 137.69728,
+      "radius": 1800,
+      "km": 233.5,
+      "text": "Here's Hamamatsu. And in a moment, right next to the tracks on your side, you'll see a tall, flat, glassy skyscraper with a rounded top. That's Act Tower, about two hundred and thirteen metres tall. [excited] It's said to be shaped like a harmonica!\n\nBecause Hamamatsu is the city of music. In 1887, a man named Torakusu Yamaha was asked to fix a broken organ here. He fixed it, then decided to build his own. [chuckles] That's how Yamaha started. Kawai pianos are from here too, and Roland makes its synthesizers here.\n\nAnd not just music. Suzuki is headquartered here, and Soichiro Honda founded Honda in Hamamatsu. Pianos, motorbikes, cars... [laughs] This city just likes building things that go.\n\nIt also takes its gyoza very seriously. Hamamatsu fights a friendly war with the city of Utsunomiya over who eats the most dumplings in Japan.\n\nRight after the city, we fly across the Tenryū River, the \"heavenly dragon,\" rushing down more than two hundred kilometres from the mountains of Nagano. Look at all those stones. In a typhoon, this river roars.\n\nNext: we're heading into tea country.",
+      "audio": "audio/hamamatsu.a6b5e90a01.mp3",
+      "duration": 69
+    },
+    {
+      "id": "tea",
+      "title": "Green Tea Country",
+      "jp": "掛川・お茶",
+      "teaser": "Tea fields with propellers, a wooden castle, and a river you couldn't cross",
+      "lat": 34.75359,
+      "lng": 137.96509,
+      "radius": 2000,
+      "km": 260,
+      "text": "[excited] Welcome to Shizuoka, Japan's great tea country! For generations this prefecture has grown more green tea than anywhere else in Japan.\n\nKeep watching your window for neat rows of rounded, bright green hedges on the hillsides. Those are tea bushes. And see the tall poles with little propellers on top? Those are frost fans. On cold spring nights, they blow warmer air down onto the young leaves so they don't freeze. [chuckles] The tea leaves get their own personal climate control.\n\nQuick, castle alert! Kakegawa station is coming up, and just beside it, on your side, there's a small white castle on a hill. That's Kakegawa Castle, rebuilt in 1994 entirely out of wood, using traditional methods. It was one of the first castle keeps in modern Japan to be rebuilt that way.\n\nAnd in a little while, the Ōi River. In the Edo period, the shogun banned bridges and boats here, to slow down any army marching on Edo. So travellers were carried across on the shoulders of porters. There was a famous saying: [dramatic] \"You can cross the Hakone mountains on horseback, but you just can't cross the Ōi River.\" [laughs] When we get there, we'll cross it in about ten seconds.",
+      "audio": "audio/tea.2109df1a72.mp3",
+      "duration": 66
+    },
+    {
+      "id": "shizuoka",
+      "title": "Shizuoka",
+      "jp": "静岡",
+      "teaser": "Where the first shogun retired, and the plastic model capital of Japan",
+      "lat": 34.93727,
+      "lng": 138.36292,
+      "radius": 1800,
+      "km": 304,
+      "text": "We're racing through Shizuoka city. Out your window, close to the station, is the site of Sunpu Castle, where Tokugawa Ieyasu came to retire. Retire... in the shogun sense. [chuckles] He handed the title to his son, and then kept running the country from here anyway, until he died in 1616.\n\nFun fact: Shizuoka is the plastic model capital of Japan. Tamiya is based here, and almost all of Japan's Gundam model kits are made in this city. So if you ever built a little robot, there's a good chance it came from here.\n\n[serious] Okay. Now I need your full attention for the next half hour.\n\nWe're getting close to the reason seat E exists. After a few short tunnels, we follow the coast, then cross the Fuji River. And if the clouds are kind to us today, the biggest, most famous mountain in Japan is going to fill your window.\n\n[whispers] No pressure, sky. No pressure.\n\nGet your camera ready, wipe your window if you can, and stay tuned.",
+      "audio": "audio/shizuoka.bd78552691.mp3",
+      "duration": 54
+    },
+    {
+      "id": "fuji",
+      "title": "Mount Fuji",
+      "jp": "富士山",
+      "teaser": "The main event: Fuji-san, straight out your window",
+      "lat": 35.12757,
+      "lng": 138.59408,
+      "radius": 2200,
+      "km": 334.5,
+      "text": "[excited] Here we go! Look out your window. Look up. Higher than you think. [gasps]\n\nIf the sky is clear, that's her: Mount Fuji. Three thousand, seven hundred and seventy-six metres. Less than thirty kilometres away, and absolutely enormous.\n\nIn a moment we cross the Fuji River on a long iron bridge. This is one of the most famous views in Japan. The wide, stony river in front, and the perfect cone rising behind it.\n\nFuji is a volcano, and technically an active one. It last erupted in 1707, covering Edo, today's Tokyo, in ash. Since then, it's been resting. [whispers] Let's keep it that way.\n\nFor centuries, Fuji has been a sacred mountain. Pilgrims climb it every summer to watch the sunrise from the top. And it's not a World Heritage Site for its nature, but for its culture: as a place of worship and a source of artistic inspiration. Think of Hokusai's famous prints, where Fuji peeks out from behind a giant wave.\n\nNow, those tall chimneys on your side? That's Fuji City, the paper capital of Japan. All that pure snowmelt water from the mountain is perfect for making paper. Chimneys in front, Fuji behind. Very photogenic.\n\n[chuckles] And if all you see right now is a wall of cloud... I'm so sorry. Fuji is famously shy. In winter, the odds are excellent; on a hazy summer afternoon, it's a coin toss. But she's out there, I promise.\n\nTake your photos. Then just look for a minute. You're riding past Mount Fuji in a bullet train. That's a pretty good Tuesday. Or whatever day it is.",
+      "audio": "audio/fuji.b0d3f86457.mp3",
+      "duration": 91
+    },
+    {
+      "id": "mishima",
+      "title": "Fuji's Spring Water",
+      "jp": "三島",
+      "teaser": "Snowmelt that takes years to come back up, and a very long tunnel",
+      "lat": 35.13561,
+      "lng": 138.81977,
+      "radius": 2000,
+      "km": 356,
+      "text": "Still got Fuji? Take a last look out your window. You're seeing her from a new angle now, from the southeast.\n\nWe're coming up on Mishima. And here's something beautiful: the snow that melts on Fuji's summit soaks down into the old lava, and slowly travels underground... for years. Then it bubbles back up, crystal clear, right here in Mishima, in springs and little rivers full of watercress and fish. So when you drink water in this town, you might be drinking Fuji snow from years ago.\n\nMishima also has one of the longest pedestrian suspension bridges in Japan, four hundred metres, built mostly so people could stand on it and stare at Fuji. [chuckles] Priorities.\n\nAcross the aisle, seat A is looking toward the Izu Peninsula: hot springs, beaches, and fishing towns.\n\n[dramatic] And then... darkness. A few minutes after Mishima, we dive into the Shin-Tanna Tunnel, almost eight kilometres long, straight through the mountains. The old railway tunnel next to it took sixteen years to dig, through hot springs and floods. We'll take about two minutes.\n\n[whispers] Fuji, thank you. See you next time.",
+      "audio": "audio/mishima.e15b3d913c.mp3",
+      "duration": 67
+    },
+    {
+      "id": "hakone",
+      "title": "Through Hakone's Mountains",
+      "jp": "箱根・小田原",
+      "teaser": "Hot springs, a samurai checkpoint, and a castle across the aisle",
+      "lat": 35.21575,
+      "lng": 139.13753,
+      "radius": 2000,
+      "km": 394.5,
+      "text": "[sighs] And... we're back in the light! While we were in all those tunnels, we zipped right under Atami, a famous hot spring town by the sea.\n\nThe green mountains on your side now are Hakone. Hot springs, a crater lake, pirate-ship sightseeing boats... and in the samurai days, one of the strictest checkpoints in Japan. Guards checked every traveller heading to or from Edo, especially women, because the shogun kept the wives of the lords in Edo as, let's say, insurance. [chuckles] Politics were intense.\n\nOkay, quick, look across the aisle! On seat A's side, we're passing Odawara, and its white castle. Odawara Castle was the stronghold of the Hōjō clan, until 1590, when Toyotomi Hideyoshi surrounded it with a gigantic army. He even built a whole castle on a nearby hill, in secret, behind the trees. Then he cut the trees down overnight, so it looked like a castle had appeared out of nowhere. [laughs] The Hōjō surrendered soon after.\n\nOdawara is also famous for kamaboko, those pretty pink-and-white fish cakes you find in ramen.\n\nNext, the mountains get one more chance to show off. Keep your eyes on your window.",
+      "audio": "audio/hakone.28291de8df.mp3",
+      "duration": 70
+    },
+    {
+      "id": "tanzawa",
+      "title": "Tanzawa & a Last Look",
+      "jp": "丹沢",
+      "teaser": "A pyramid-shaped mountain, and maybe one more Fuji",
+      "lat": 35.31436,
+      "lng": 139.27158,
+      "radius": 2000,
+      "km": 412,
+      "text": "Look out your window at that wall of mountains in the distance. That's the Tanzawa range. And the pointy, pyramid-shaped one? That's Ōyama, a sacred mountain. In the Edo period, pilgrimages there were hugely popular with Tokyo people. Basically a religious trip with a party at the end. [chuckles] Like a lot of pilgrimages, really.\n\n[excited] Now, here's a secret. On a really clear day, especially in winter, Mount Fuji sometimes peeks out above the Tanzawa mountains, way off to the west. Just the white tip. So scan along the top of the range. If you see something white and triangular that seems too high to be real... that's her. Saying goodbye.\n\nSoon we cross the Sagami River, and from here on, the countryside gives way to the endless suburbs of greater Tokyo.\n\nFun stat: this train line carries hundreds of thousands of people every day, with trains every few minutes at rush hour. And the average delay per train is usually under a minute. [laughs] Over a whole year.\n\nNext up: a stop in Yokohama, and a stadium with a famous final.",
+      "audio": "audio/tanzawa.c9fb67c30c.mp3",
+      "duration": 61
+    },
+    {
+      "id": "yokohama",
+      "title": "Shin-Yokohama",
+      "jp": "新横浜",
+      "teaser": "Japan's biggest stadium, and a museum dedicated to ramen",
+      "lat": 35.48579,
+      "lng": 139.58971,
+      "radius": 1800,
+      "km": 447,
+      "text": "We're slowing down for Shin-Yokohama. As we pull in, watch your side for a huge white bowl. [excited] That's Nissan Stadium, the biggest stadium in Japan, with more than seventy thousand seats.\n\nIn 2002, it hosted the FIFA World Cup final. Brazil beat Germany two-nil, with Ronaldo scoring both goals. And in 2019, the Rugby World Cup final was played there too. So yes: two world finals, in two different sports, in one stadium. Right there.\n\nAnd just near this station is one of the most delicious museums on Earth: the Shin-Yokohama Ramen Museum. It's a recreated 1950s Tokyo street, underground, full of ramen shops from all over Japan. [chuckles] Museum visits in Japan hit different.\n\nYokohama itself, Japan's second-biggest city, is down the hill toward the bay. That's where Japan's first foreign trading port opened in 1859, and it still has the country's biggest Chinatown.\n\nWe'll stop for about a minute. Then, it's the final stretch into Tokyo.",
+      "audio": "audio/yokohama.e72756c7bc.mp3",
+      "duration": 60
+    },
+    {
+      "id": "tama",
+      "title": "Into Tokyo",
+      "jp": "多摩川",
+      "teaser": "Crossing the river into the world's biggest city",
+      "lat": 35.55616,
+      "lng": 139.65654,
+      "radius": 1800,
+      "km": 457,
+      "text": "[excited] Here comes the Tama River! When we cross it, we leave Kanagawa and officially enter Tokyo.\n\nGreater Tokyo is home to around thirty-seven million people, one of the largest urban areas on the planet. Look out your window: you might notice that the city just... doesn't stop. It's houses and apartments and train lines, all the way to the horizon, in every direction. [chuckles] It's a little overwhelming, in the best way.\n\nNow the train will slow down, and you'll feel it: the bullet train turning into a city train.\n\nOur next stop is Shinagawa. And here's a peek into the future. Deep underground near Shinagawa, they're building the Chūō Shinkansen: a magnetic levitation train that floats above the track and will run at five hundred kilometres an hour. It's planned to open sometime in the 2030s. [whispers] So enjoy it while it lasts. This train will be the slow one soon.\n\nGet ready: after Shinagawa, there's one more landmark to spot on your side.",
+      "audio": "audio/tama.d2154eb15b.mp3",
+      "duration": 56
+    },
+    {
+      "id": "tower",
+      "title": "Tokyo Tower",
+      "jp": "東京タワー",
+      "teaser": "Orange, white, and a little taller than the Eiffel Tower",
+      "lat": 35.63717,
+      "lng": 139.74282,
+      "radius": 1000,
+      "km": 470.3,
+      "text": "Okay, last challenge of the day. [excited] Find Tokyo Tower! In the next minute or two, look out your window, a little ahead, between the buildings. You're looking for a tall orange-and-white lattice tower.\n\nTokyo Tower opened in 1958, inspired by the Eiffel Tower, and at three hundred and thirty-three metres, it's a little taller than its French cousin. It's painted orange and white for aircraft safety. And here's a wild fact: part of its steel came from scrapped tanks, left over from the Korean War. [chuckles] Swords into ploughshares. Tanks into towers.\n\nAcross the aisle, if seat A is lucky, they might glimpse Tokyo Skytree in the distance, the tallest tower in the world at six hundred and thirty-four metres. [whispers] But Tokyo Tower has more charm. Don't tell anyone I said that.\n\nIf you spotted it: congratulations. You've completed the seat E checklist. [laughs] Mountains, castles, rivers, a stadium, and a tower.",
+      "audio": "audio/tower.29e9b87884.mp3",
+      "duration": 56
+    },
+    {
+      "id": "tokyo",
+      "title": "Welcome to Tokyo",
+      "jp": "東京駅",
+      "teaser": "Arrival, and the cleaning team that turns a train around in seven minutes",
+      "lat": 35.67473,
+      "lng": 139.76318,
+      "radius": 700,
+      "km": 475.2,
+      "text": "[warmly] And here we are: Tokyo Station. About four hundred and seventy-six kilometres from Kyoto, in a little over two hours.\n\nBefore you go, here's my favourite thing about this station. As soon as you step off, a team in matching uniforms will line up on the platform and bow. Then they'll clean this entire train, every seat, every table, every bathroom, and turn all the seats to face the other way... in about seven minutes. People call it the seven-minute miracle. Stay for a second and watch them. It's mesmerizing.\n\nOn the other side of the station is the beautiful red-brick Marunouchi building, from 1914. It's worth a detour on your way out.\n\nThank you so much for riding with me, and for picking the best seat on the train. [chuckles] Seat E. Enjoy Tokyo! Sayōnara!",
+      "audio": "audio/tokyo.fcf47ffc49.mp3",
+      "duration": 45
+    }
+  ],
+  "path": [
+    [
+      34.98463,
+      135.75845
+    ],
+    [
+      34.98549,
+      135.77093
+    ],
+    [
+      34.9854,
+      135.77461
+    ],
+    [
+      34.98157,
+      135.79648
+    ],
+    [
+      34.98112,
+      135.81552
+    ],
+    [
+      34.98076,
+      135.82064
+    ],
+    [
+      34.97496,
+      135.87216
+    ],
+    [
+      34.97245,
+      135.88988
+    ],
+    [
+      34.97018,
+      135.90196
+    ],
+    [
+      34.96974,
+      135.90672
+    ],
+    [
+      34.96933,
+      135.91449
+    ],
+    [
+      34.96965,
+      135.91908
+    ],
+    [
+      34.9708,
+      135.92424
+    ],
+    [
+      34.97269,
+      135.92889
+    ],
+    [
+      34.97617,
+      135.93418
+    ],
+    [
+      34.99975,
+      135.96283
+    ],
+    [
+      35.02198,
+      135.98218
+    ],
+    [
+      35.06329,
+      136.0238
+    ],
+    [
+      35.06902,
+      136.03074
+    ],
+    [
+      35.08689,
+      136.05844
+    ],
+    [
+      35.09152,
+      136.06662
+    ],
+    [
+      35.09586,
+      136.07601
+    ],
+    [
+      35.1098,
+      136.11072
+    ],
+    [
+      35.12018,
+      136.133
+    ],
+    [
+      35.13265,
+      136.16312
+    ],
+    [
+      35.14613,
+      136.188
+    ],
+    [
+      35.14835,
+      136.19139
+    ],
+    [
+      35.15112,
+      136.1946
+    ],
+    [
+      35.15475,
+      136.19779
+    ],
+    [
+      35.19177,
+      136.22558
+    ],
+    [
+      35.22856,
+      136.26005
+    ],
+    [
+      35.23337,
+      136.26355
+    ],
+    [
+      35.25775,
+      136.27643
+    ],
+    [
+      35.26137,
+      136.27792
+    ],
+    [
+      35.26458,
+      136.27867
+    ],
+    [
+      35.29766,
+      136.2829
+    ],
+    [
+      35.31504,
+      136.28957
+    ],
+    [
+      35.33159,
+      136.29375
+    ],
+    [
+      35.33491,
+      136.29535
+    ],
+    [
+      35.33849,
+      136.29775
+    ],
+    [
+      35.3476,
+      136.30582
+    ],
+    [
+      35.35117,
+      136.30998
+    ],
+    [
+      35.35329,
+      136.31364
+    ],
+    [
+      35.35494,
+      136.31791
+    ],
+    [
+      35.35957,
+      136.33733
+    ],
+    [
+      35.36588,
+      136.35655
+    ],
+    [
+      35.36719,
+      136.36461
+    ],
+    [
+      35.36718,
+      136.37298
+    ],
+    [
+      35.3668,
+      136.37757
+    ],
+    [
+      35.36267,
+      136.39612
+    ],
+    [
+      35.36213,
+      136.39955
+    ],
+    [
+      35.35919,
+      136.44007
+    ],
+    [
+      35.35682,
+      136.45373
+    ],
+    [
+      35.35641,
+      136.45963
+    ],
+    [
+      35.35701,
+      136.46534
+    ],
+    [
+      35.35888,
+      136.47395
+    ],
+    [
+      35.36708,
+      136.49475
+    ],
+    [
+      35.36858,
+      136.4994
+    ],
+    [
+      35.36942,
+      136.50483
+    ],
+    [
+      35.36926,
+      136.51107
+    ],
+    [
+      35.36761,
+      136.52184
+    ],
+    [
+      35.36557,
+      136.52819
+    ],
+    [
+      35.36343,
+      136.53239
+    ],
+    [
+      35.35424,
+      136.547
+    ],
+    [
+      35.35204,
+      136.55179
+    ],
+    [
+      35.35058,
+      136.55663
+    ],
+    [
+      35.34964,
+      136.56374
+    ],
+    [
+      35.34841,
+      136.59723
+    ],
+    [
+      35.34527,
+      136.63563
+    ],
+    [
+      35.34447,
+      136.63973
+    ],
+    [
+      35.34348,
+      136.64298
+    ],
+    [
+      35.33701,
+      136.65906
+    ],
+    [
+      35.33515,
+      136.6626
+    ],
+    [
+      35.33292,
+      136.66582
+    ],
+    [
+      35.31017,
+      136.6923
+    ],
+    [
+      35.30743,
+      136.69623
+    ],
+    [
+      35.30531,
+      136.70039
+    ],
+    [
+      35.30167,
+      136.70972
+    ],
+    [
+      35.29046,
+      136.73572
+    ],
+    [
+      35.28889,
+      136.7388
+    ],
+    [
+      35.28661,
+      136.74213
+    ],
+    [
+      35.28444,
+      136.74449
+    ],
+    [
+      35.28209,
+      136.74646
+    ],
+    [
+      35.24791,
+      136.77034
+    ],
+    [
+      35.2444,
+      136.77353
+    ],
+    [
+      35.24128,
+      136.7775
+    ],
+    [
+      35.23878,
+      136.78193
+    ],
+    [
+      35.22815,
+      136.80477
+    ],
+    [
+      35.22644,
+      136.81165
+    ],
+    [
+      35.22487,
+      136.82519
+    ],
+    [
+      35.22423,
+      136.8284
+    ],
+    [
+      35.22239,
+      136.83368
+    ],
+    [
+      35.21989,
+      136.83806
+    ],
+    [
+      35.21624,
+      136.8423
+    ],
+    [
+      35.20633,
+      136.85089
+    ],
+    [
+      35.20473,
+      136.85296
+    ],
+    [
+      35.20128,
+      136.85864
+    ],
+    [
+      35.19891,
+      136.86147
+    ],
+    [
+      35.19601,
+      136.86369
+    ],
+    [
+      35.18873,
+      136.86726
+    ],
+    [
+      35.18002,
+      136.87633
+    ],
+    [
+      35.17738,
+      136.87821
+    ],
+    [
+      35.1716,
+      136.88065
+    ],
+    [
+      35.16397,
+      136.8851
+    ],
+    [
+      35.15363,
+      136.88769
+    ],
+    [
+      35.14843,
+      136.88813
+    ],
+    [
+      35.13455,
+      136.88574
+    ],
+    [
+      35.13137,
+      136.88563
+    ],
+    [
+      35.12674,
+      136.88671
+    ],
+    [
+      35.12244,
+      136.88903
+    ],
+    [
+      35.11867,
+      136.89233
+    ],
+    [
+      35.11596,
+      136.89584
+    ],
+    [
+      35.1142,
+      136.89894
+    ],
+    [
+      35.10614,
+      136.91626
+    ],
+    [
+      35.10344,
+      136.92025
+    ],
+    [
+      35.10028,
+      136.92349
+    ],
+    [
+      35.09651,
+      136.92606
+    ],
+    [
+      35.06605,
+      136.9423
+    ],
+    [
+      35.05082,
+      136.95192
+    ],
+    [
+      35.04591,
+      136.95563
+    ],
+    [
+      35.04165,
+      136.95994
+    ],
+    [
+      35.03881,
+      136.96356
+    ],
+    [
+      34.99115,
+      137.03697
+    ],
+    [
+      34.9879,
+      137.04147
+    ],
+    [
+      34.98395,
+      137.04623
+    ],
+    [
+      34.97914,
+      137.05113
+    ],
+    [
+      34.86882,
+      137.15264
+    ],
+    [
+      34.86061,
+      137.16059
+    ],
+    [
+      34.85819,
+      137.16405
+    ],
+    [
+      34.85629,
+      137.16794
+    ],
+    [
+      34.8422,
+      137.20727
+    ],
+    [
+      34.83294,
+      137.23026
+    ],
+    [
+      34.83104,
+      137.23381
+    ],
+    [
+      34.82217,
+      137.24734
+    ],
+    [
+      34.82038,
+      137.25055
+    ],
+    [
+      34.81832,
+      137.25523
+    ],
+    [
+      34.81644,
+      137.26151
+    ],
+    [
+      34.81537,
+      137.26742
+    ],
+    [
+      34.81474,
+      137.28997
+    ],
+    [
+      34.81431,
+      137.29407
+    ],
+    [
+      34.81342,
+      137.29796
+    ],
+    [
+      34.81132,
+      137.30313
+    ],
+    [
+      34.80044,
+      137.32305
+    ],
+    [
+      34.78493,
+      137.36036
+    ],
+    [
+      34.78158,
+      137.36536
+    ],
+    [
+      34.77402,
+      137.37395
+    ],
+    [
+      34.77196,
+      137.37589
+    ],
+    [
+      34.76864,
+      137.37818
+    ],
+    [
+      34.75488,
+      137.38532
+    ],
+    [
+      34.74763,
+      137.39156
+    ],
+    [
+      34.74455,
+      137.39558
+    ],
+    [
+      34.73174,
+      137.41666
+    ],
+    [
+      34.72969,
+      137.42203
+    ],
+    [
+      34.72639,
+      137.43519
+    ],
+    [
+      34.71212,
+      137.49595
+    ],
+    [
+      34.70339,
+      137.53481
+    ],
+    [
+      34.69555,
+      137.56399
+    ],
+    [
+      34.6946,
+      137.57153
+    ],
+    [
+      34.69492,
+      137.5862
+    ],
+    [
+      34.69452,
+      137.5909
+    ],
+    [
+      34.69305,
+      137.59663
+    ],
+    [
+      34.68824,
+      137.60878
+    ],
+    [
+      34.68728,
+      137.61285
+    ],
+    [
+      34.68688,
+      137.61682
+    ],
+    [
+      34.68739,
+      137.64201
+    ],
+    [
+      34.68771,
+      137.64682
+    ],
+    [
+      34.68865,
+      137.65175
+    ],
+    [
+      34.69255,
+      137.66584
+    ],
+    [
+      34.69364,
+      137.67236
+    ],
+    [
+      34.69417,
+      137.67856
+    ],
+    [
+      34.69438,
+      137.68718
+    ],
+    [
+      34.69262,
+      137.70688
+    ],
+    [
+      34.69284,
+      137.71303
+    ],
+    [
+      34.69373,
+      137.7175
+    ],
+    [
+      34.69552,
+      137.72236
+    ],
+    [
+      34.69768,
+      137.72616
+    ],
+    [
+      34.70281,
+      137.73338
+    ],
+    [
+      34.70496,
+      137.73816
+    ],
+    [
+      34.70712,
+      137.7467
+    ],
+    [
+      34.70852,
+      137.75868
+    ],
+    [
+      34.70877,
+      137.76489
+    ],
+    [
+      34.70857,
+      137.78618
+    ],
+    [
+      34.70774,
+      137.79168
+    ],
+    [
+      34.70329,
+      137.81109
+    ],
+    [
+      34.70271,
+      137.81818
+    ],
+    [
+      34.70293,
+      137.82968
+    ],
+    [
+      34.7034,
+      137.8358
+    ],
+    [
+      34.70825,
+      137.86719
+    ],
+    [
+      34.7096,
+      137.87257
+    ],
+    [
+      34.71178,
+      137.87742
+    ],
+    [
+      34.71386,
+      137.88055
+    ],
+    [
+      34.72049,
+      137.88861
+    ],
+    [
+      34.72389,
+      137.89366
+    ],
+    [
+      34.72702,
+      137.89916
+    ],
+    [
+      34.7302,
+      137.90612
+    ],
+    [
+      34.73786,
+      137.92618
+    ],
+    [
+      34.74577,
+      137.9413
+    ],
+    [
+      34.75197,
+      137.96088
+    ],
+    [
+      34.76197,
+      137.98629
+    ],
+    [
+      34.76731,
+      138.00281
+    ],
+    [
+      34.76831,
+      138.00737
+    ],
+    [
+      34.76975,
+      138.01866
+    ],
+    [
+      34.77252,
+      138.02794
+    ],
+    [
+      34.776,
+      138.10999
+    ],
+    [
+      34.80212,
+      138.2009
+    ],
+    [
+      34.80354,
+      138.2049
+    ],
+    [
+      34.80558,
+      138.20901
+    ],
+    [
+      34.83101,
+      138.24596
+    ],
+    [
+      34.87067,
+      138.30531
+    ],
+    [
+      34.88448,
+      138.32315
+    ],
+    [
+      34.91311,
+      138.35193
+    ],
+    [
+      34.92212,
+      138.35897
+    ],
+    [
+      34.92563,
+      138.36107
+    ],
+    [
+      34.92975,
+      138.36249
+    ],
+    [
+      34.93336,
+      138.36294
+    ],
+    [
+      34.94225,
+      138.36305
+    ],
+    [
+      34.94514,
+      138.36361
+    ],
+    [
+      34.94834,
+      138.36484
+    ],
+    [
+      34.95084,
+      138.36625
+    ],
+    [
+      34.95351,
+      138.36833
+    ],
+    [
+      34.96712,
+      138.3818
+    ],
+    [
+      34.96941,
+      138.38515
+    ],
+    [
+      34.97317,
+      138.39203
+    ],
+    [
+      34.98,
+      138.40603
+    ],
+    [
+      35.01153,
+      138.45493
+    ],
+    [
+      35.01452,
+      138.4589
+    ],
+    [
+      35.03212,
+      138.4797
+    ],
+    [
+      35.04251,
+      138.49571
+    ],
+    [
+      35.04726,
+      138.50037
+    ],
+    [
+      35.08625,
+      138.53385
+    ],
+    [
+      35.10187,
+      138.54856
+    ],
+    [
+      35.10952,
+      138.55659
+    ],
+    [
+      35.11382,
+      138.56379
+    ],
+    [
+      35.1356,
+      138.61192
+    ],
+    [
+      35.1369,
+      138.61796
+    ],
+    [
+      35.1398,
+      138.64844
+    ],
+    [
+      35.14394,
+      138.67449
+    ],
+    [
+      35.14526,
+      138.68069
+    ],
+    [
+      35.14923,
+      138.69282
+    ],
+    [
+      35.15032,
+      138.69857
+    ],
+    [
+      35.1521,
+      138.71855
+    ],
+    [
+      35.15584,
+      138.74933
+    ],
+    [
+      35.15606,
+      138.75361
+    ],
+    [
+      35.15592,
+      138.7576
+    ],
+    [
+      35.1554,
+      138.76172
+    ],
+    [
+      35.15438,
+      138.76632
+    ],
+    [
+      35.14216,
+      138.80918
+    ],
+    [
+      35.14062,
+      138.81272
+    ],
+    [
+      35.13911,
+      138.81528
+    ],
+    [
+      35.13253,
+      138.82352
+    ],
+    [
+      35.13019,
+      138.82704
+    ],
+    [
+      35.12813,
+      138.83156
+    ],
+    [
+      35.12673,
+      138.83687
+    ],
+    [
+      35.12287,
+      138.8833
+    ],
+    [
+      35.1234,
+      138.88976
+    ],
+    [
+      35.12662,
+      138.90785
+    ],
+    [
+      35.12788,
+      138.9166
+    ],
+    [
+      35.12821,
+      138.92074
+    ],
+    [
+      35.12807,
+      138.92474
+    ],
+    [
+      35.12732,
+      138.92911
+    ],
+    [
+      35.1263,
+      138.93252
+    ],
+    [
+      35.12452,
+      138.93642
+    ],
+    [
+      35.11701,
+      138.95064
+    ],
+    [
+      35.11115,
+      138.96718
+    ],
+    [
+      35.10906,
+      138.97435
+    ],
+    [
+      35.09929,
+      139.06302
+    ],
+    [
+      35.09928,
+      139.06606
+    ],
+    [
+      35.09972,
+      139.06911
+    ],
+    [
+      35.1013,
+      139.07338
+    ],
+    [
+      35.10306,
+      139.0763
+    ],
+    [
+      35.10553,
+      139.07944
+    ],
+    [
+      35.10779,
+      139.08146
+    ],
+    [
+      35.11018,
+      139.08296
+    ],
+    [
+      35.11248,
+      139.08391
+    ],
+    [
+      35.13413,
+      139.08995
+    ],
+    [
+      35.13961,
+      139.09265
+    ],
+    [
+      35.1766,
+      139.12666
+    ],
+    [
+      35.18292,
+      139.13123
+    ],
+    [
+      35.18679,
+      139.13303
+    ],
+    [
+      35.19081,
+      139.13408
+    ],
+    [
+      35.22657,
+      139.13903
+    ],
+    [
+      35.23075,
+      139.14023
+    ],
+    [
+      35.24089,
+      139.14393
+    ],
+    [
+      35.24621,
+      139.14707
+    ],
+    [
+      35.25654,
+      139.15488
+    ],
+    [
+      35.2745,
+      139.17337
+    ],
+    [
+      35.27771,
+      139.17765
+    ],
+    [
+      35.28051,
+      139.18254
+    ],
+    [
+      35.30038,
+      139.22552
+    ],
+    [
+      35.30232,
+      139.23097
+    ],
+    [
+      35.31287,
+      139.26796
+    ],
+    [
+      35.31412,
+      139.27109
+    ],
+    [
+      35.31668,
+      139.27575
+    ],
+    [
+      35.32384,
+      139.28778
+    ],
+    [
+      35.32648,
+      139.2911
+    ],
+    [
+      35.33628,
+      139.30176
+    ],
+    [
+      35.35282,
+      139.31747
+    ],
+    [
+      35.35631,
+      139.32128
+    ],
+    [
+      35.3848,
+      139.36089
+    ],
+    [
+      35.38767,
+      139.36553
+    ],
+    [
+      35.40957,
+      139.41514
+    ],
+    [
+      35.43103,
+      139.46259
+    ],
+    [
+      35.44626,
+      139.50407
+    ],
+    [
+      35.44981,
+      139.51551
+    ],
+    [
+      35.45117,
+      139.5189
+    ],
+    [
+      35.47836,
+      139.56537
+    ],
+    [
+      35.4805,
+      139.5709
+    ],
+    [
+      35.48476,
+      139.58719
+    ],
+    [
+      35.48666,
+      139.59151
+    ],
+    [
+      35.48899,
+      139.59535
+    ],
+    [
+      35.50101,
+      139.60961
+    ],
+    [
+      35.51447,
+      139.62638
+    ],
+    [
+      35.51875,
+      139.63034
+    ],
+    [
+      35.54235,
+      139.64748
+    ],
+    [
+      35.55845,
+      139.65807
+    ],
+    [
+      35.5646,
+      139.66313
+    ],
+    [
+      35.5669,
+      139.66416
+    ],
+    [
+      35.56915,
+      139.66458
+    ],
+    [
+      35.57425,
+      139.66317
+    ],
+    [
+      35.57565,
+      139.66308
+    ],
+    [
+      35.57724,
+      139.66358
+    ],
+    [
+      35.57868,
+      139.66478
+    ],
+    [
+      35.57968,
+      139.66644
+    ],
+    [
+      35.58385,
+      139.67839
+    ],
+    [
+      35.59442,
+      139.71559
+    ],
+    [
+      35.59516,
+      139.71723
+    ],
+    [
+      35.59664,
+      139.719
+    ],
+    [
+      35.60657,
+      139.72377
+    ],
+    [
+      35.61504,
+      139.72949
+    ],
+    [
+      35.61628,
+      139.73135
+    ],
+    [
+      35.6172,
+      139.73532
+    ],
+    [
+      35.61935,
+      139.73747
+    ],
+    [
+      35.63098,
+      139.74048
+    ],
+    [
+      35.63734,
+      139.74287
+    ],
+    [
+      35.6418,
+      139.74343
+    ],
+    [
+      35.64308,
+      139.74396
+    ],
+    [
+      35.64426,
+      139.74528
+    ],
+    [
+      35.6483,
+      139.75336
+    ],
+    [
+      35.64952,
+      139.75487
+    ],
+    [
+      35.65078,
+      139.75578
+    ],
+    [
+      35.65578,
+      139.75758
+    ],
+    [
+      35.6611,
+      139.75874
+    ],
+    [
+      35.6688,
+      139.75853
+    ],
+    [
+      35.6726,
+      139.76066
+    ],
+    [
+      35.67606,
+      139.76474
+    ],
+    [
+      35.67918,
+      139.76711
+    ],
+    [
+      35.68093,
+      139.76789
+    ]
+  ]
+}

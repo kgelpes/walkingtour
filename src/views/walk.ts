@@ -1,7 +1,7 @@
 import { compass, go, narrator, primeFromGesture, session } from '../app';
 import { h, sheet, toast } from '../dom';
-import { Geofence, type Arrival } from '../geofence';
-import { bearing, compassWord, distance, formatDistance, formatTime, formatWalk } from '../geo';
+import { DEFAULT_OPTIONS, Geofence, type Arrival } from '../geofence';
+import { bearing, compassWord, distance, formatDistance, formatEta, formatTime, formatWalk } from '../geo';
 import { icons } from '../icons';
 import { DemoWalker, GpsSource, type GpsStatus, type LocationSource } from '../location';
 import { TourMap } from '../map';
@@ -41,7 +41,9 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
   save();
   const prefs = settings.get();
 
-  const fence = new Geofence(stops);
+  const train = tour.mode === 'train';
+  const noun = tour.stopNoun ?? 'stop';
+  const fence = new Geofence(stops, { ...DEFAULT_OPTIONS, ...tour.geofence });
   fence.reset(prog.done);
 
   let fix: Fix | null = null;
@@ -76,7 +78,7 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
   root.append(view);
 
   const sheetHeight = () => (expanded ? 0 : sheetEl.getBoundingClientRect().height);
-  const map = new TourMap(mapEl, stops, sheetHeight);
+  const map = new TourMap(mapEl, stops, sheetHeight, { path: tour.path, closeZoom: train ? 13 : 18 });
   map.onFollowChange = (f) => {
     locateBtn.classList.toggle('on', f);
     locateBtn.innerHTML = f ? icons.locateOn : icons.locate;
@@ -136,11 +138,15 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
       const d = distance(fix, next);
       const b = bearing(fix, next);
       const rel = heading != null ? b - heading : b;
-      arrow = h('span', { class: `dir-arrow${heading != null ? ' live' : ''}`, html: icons.arrow, style: `--rot:${rel}deg`, 'aria-hidden': 'true' });
+      // On a train the direction is the track's; only the distance and time matter.
+      if (!train) arrow = h('span', { class: `dir-arrow${heading != null ? ' live' : ''}`, html: icons.arrow, style: `--rot:${rel}deg`, 'aria-hidden': 'true' });
       if (d <= next.radius) arrow = null;
+      const trainSpeed = (fix.speed ?? 0) > 8 ? fix.speed! : 70;
       line = d <= next.radius
-        ? h('span', null, h('strong', null, 'You’re here'), prefs.autoplay ? ' · starting in a moment' : '')
-        : h('span', null, h('strong', null, formatDistance(d)), ` · ${formatWalk(d)}`, heading == null ? ` · ${compassWord(b)}` : '');
+        ? h('span', null, h('strong', null, train ? 'Coming up now' : 'You’re here'), prefs.autoplay ? ' · starting in a moment' : '')
+        : train
+          ? h('span', null, h('strong', null, formatDistance(d)), ` · ${formatEta(d, trainSpeed)}`)
+          : h('span', null, h('strong', null, formatDistance(d)), ` · ${formatWalk(d)}`, heading == null ? ` · ${compassWord(b)}` : '');
     } else if (gps === 'denied' || gps === 'unavailable') {
       line = h('span', null, 'Location is off — tap a stop below to listen');
     } else {
@@ -148,7 +154,7 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
     }
     nextEl.replaceChildren(
       h('button', { class: 'next-main', onclick: () => map.focusStop(next), 'aria-label': `Show ${next.title} on the map` },
-        h('div', { class: 'eyebrow' }, next.optional ? 'Optional detour' : `Next stop · ${Math.min(n, required)} of ${required}`),
+        h('div', { class: 'eyebrow' }, next.optional ? 'Optional detour' : `Next ${noun} · ${Math.min(n, required)} of ${required}`),
         h('h2', null, next.title),
         h('p', { class: 'next-line' }, arrow, line)),
       h('button', { class: 'btn ghost small skip', onclick: () => skip(next) }, next.optional ? 'Skip detour' : 'Skip'),
@@ -176,7 +182,7 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
       playerBuilt = false;
       playerEl.className = 'player idle';
       playerEl.replaceChildren(h('span', { html: icons.headphones }),
-        h('p', null, demo ? 'Demo: the walker moves along the route. Tap the map to jump anywhere.' : 'Narration starts by itself at each stop. Keep this screen on.'));
+        h('p', null, demo ? `Demo: the ${train ? 'train' : 'walker'} moves along the route. Tap the map to jump anywhere.` : train ? 'Each story starts by itself about a minute before the sight. Keep this screen on.' : 'Narration starts by itself at each stop. Keep this screen on.'));
       return;
     }
     if (!playerBuilt) {
@@ -278,7 +284,7 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
     prog.last = { id: c.id, time: from };
     save();
     void narrator.play(c, { from });
-    demoWalker?.setWalking(false);
+    pauseDemo();
     renderAll();
   }
 
@@ -342,7 +348,7 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
       void narrator.chime();
     } else {
       banner = null;
-      demoWalker?.setWalking(false);
+      pauseDemo();
       renderAll();
       await narrator.chime();
       if (narrator.state.playing) return; // user started something during the chime
@@ -440,12 +446,17 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
   }
 
   // ---------- location ----------
-  const demoRoute = [{ lat: 34.99578, lng: 135.78185 }, ...stops.map((s) => ({ lat: s.lat, lng: s.lng }))];
-  const demoWalker = demo ? new DemoWalker(demoRoute) : null;
+  const demoRoute = tour.path
+    ? tour.path.map(([lat, lng]) => ({ lat, lng }))
+    : [{ lat: 34.99578, lng: 135.78185 }, ...stops.map((s) => ({ lat: s.lat, lng: s.lng }))];
+  // A train keeps moving while the story plays; a walker stops to listen.
+  const demoWalker = demo ? new DemoWalker(demoRoute, train ? 75 : 1.3) : null;
+  const pauseDemo = () => !train && demoWalker?.setWalking(false);
   const source: LocationSource = demoWalker ?? new GpsSource();
 
   if (demoWalker && demoBar) {
-    const speeds = [1, 4, 12];
+    const speeds = train ? [1, 10, 30] : [1, 4, 12];
+    demoWalker.speed = train ? 10 : 4;
     const renderDemo = () => {
       demoBar.replaceChildren(
         h('button', { class: 'demo-toggle', 'aria-label': demoWalker.walking ? 'Stop walking' : 'Walk', html: demoWalker.walking ? icons.pause : icons.walk,
@@ -454,8 +465,8 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
       );
     };
     demoWalker.onChange = renderDemo;
-    // Wait for the welcome to finish before walking, like a real visitor would.
-    demoWalker.walking = !(narrator.state.clip?.id === tour.intro?.id && narrator.state.playing);
+    // A walker waits for the welcome to finish before setting off; a train doesn't wait.
+    demoWalker.walking = train || !(narrator.state.clip?.id === tour.intro?.id && narrator.state.playing);
     renderDemo();
     map.onMapTap = (p) => demoWalker.teleport(p);
   }
@@ -476,7 +487,7 @@ export async function walkView(root: HTMLElement, id: string, demo: boolean) {
       if (firstFix) {
         firstFix = false;
         // Only follow the walker if they're actually near the tour.
-        if (distance(f, stops[0]) < 3000) map.setFollowing(true);
+        if (stops.some((s) => distance(f, s) < (train ? 60_000 : 3000))) map.setFollowing(true);
       }
       const arrival = fence.update(f);
       if (arrival) void onArrival(arrival);

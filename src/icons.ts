@@ -51,3 +51,23 @@ export const pagodaArt = `<svg viewBox="-150 0 500 200" preserveAspectRatio="xMi
   </g>
   <g fill="#e2533a"><path d="M90 60h6v12h-6zM104 60h6v12h-6zM88 90h7v13h-7zM105 90h7v13h-7zM86 121h8v19h-8zM106 121h8v19h-8z"/></g>
 </svg>`;
+
+/** Mount Fuji with a Shinkansen streaking past, used for train tours. */
+export const fujiArt = `<svg viewBox="-150 0 500 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="fsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9cc8ec"/><stop offset=".7" stop-color="#e3f0f8"/><stop offset="1" stop-color="#f6efe2"/></linearGradient>
+  </defs>
+  <rect x="-150" width="500" height="200" fill="url(#fsky)"/>
+  <path d="M-150 150 L-40 120 L20 132 L100 34 L180 132 L250 118 L350 140 L350 200 L-150 200Z" fill="#4f6f99"/>
+  <path d="M100 34 L80 58 L90 56 L96 64 L103 55 L110 62 L117 56 L122 60Z" fill="#fff"/>
+  <path d="M-150 160 C-40 150 60 156 160 150 C240 146 300 152 350 150 L350 200 L-150 200Z" fill="#7a9a6a"/>
+  <g>
+    <path d="M-150 150 H210 C250 150 290 158 312 170 H-150Z" fill="#f7f8fa"/>
+    <path d="M-150 163 H300 C305 165 309 167 312 170 H-150Z" fill="#1f5fae"/>
+    <path d="M235 152 C255 153 275 157 292 163 L262 161 C252 157 244 155 235 154Z" fill="#2c3440"/>
+    <g fill="#2c3440" opacity=".85"><rect x="-120" y="153" width="14" height="6" rx="2"/><rect x="-96" y="153" width="14" height="6" rx="2"/><rect x="-72" y="153" width="14" height="6" rx="2"/><rect x="-48" y="153" width="14" height="6" rx="2"/><rect x="-24" y="153" width="14" height="6" rx="2"/><rect x="0" y="153" width="14" height="6" rx="2"/><rect x="24" y="153" width="14" height="6" rx="2"/><rect x="48" y="153" width="14" height="6" rx="2"/><rect x="72" y="153" width="14" height="6" rx="2"/><rect x="96" y="153" width="14" height="6" rx="2"/><rect x="120" y="153" width="14" height="6" rx="2"/><rect x="144" y="153" width="14" height="6" rx="2"/><rect x="168" y="153" width="14" height="6" rx="2"/><rect x="192" y="153" width="14" height="6" rx="2"/></g>
+  </g>
+  <rect x="-150" y="170" width="500" height="30" fill="#5d7f50"/>
+</svg>`;
+
+export const tourArt = (key?: string) => (key === 'fuji' ? fujiArt : pagodaArt);

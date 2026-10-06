@@ -56,7 +56,8 @@ export class DemoWalker implements LocationSource {
   speed = 4; // × walking pace
   onChange?: () => void;
 
-  constructor(private route: LatLng[]) {
+  /** `pace`: metres per second at 1× (walking ≈ 1.3, Shinkansen ≈ 75). */
+  constructor(private route: LatLng[], private pace = 1.3) {
     this.pos = { ...route[0] };
   }
 
@@ -97,7 +98,7 @@ export class DemoWalker implements LocationSource {
 
   private tick() {
     if (this.walking && !this.finished) {
-      let step = 1.3 * this.speed;
+      let step = this.pace * this.speed;
       while (step > 0 && this.target < this.route.length) {
         const goal = this.route[this.target];
         const d = distance(this.pos, goal);
@@ -118,7 +119,7 @@ export class DemoWalker implements LocationSource {
 
   private emit() {
     const j = () => (Math.random() - 0.5) * 0.00003; // ≈ ±1.5 m
-    this.onFix?.({ lat: this.pos.lat + j(), lng: this.pos.lng + j(), accuracy: 8, timestamp: Date.now() });
+    this.onFix?.({ lat: this.pos.lat + j(), lng: this.pos.lng + j(), accuracy: 8, speed: this.walking ? this.pace * this.speed : 0, timestamp: Date.now() });
   }
 }
 
