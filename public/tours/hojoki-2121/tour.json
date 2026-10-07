@@ -1,0 +1,132 @@
+{
+  "id": "hojoki-2121",
+  "title": "Learning from Hōjōki",
+  "jp": "方丈記に学ぶ",
+  "city": "21_21 DESIGN SIGHT, Tokyo",
+  "tagline": "Tiny architecture reweaves life",
+  "description": "An audio guide to the exhibition at 21_21 DESIGN SIGHT (to Jan 11, 2027). Eight-hundred-year-old Hōjōki, and the ten-foot square huts it inspires today. Indoors, GPS can't tell the rooms apart: tap each work in the list when you reach it.",
+  "durationMin": 45,
+  "distanceM": 150,
+  "accent": "#7a6a4f",
+  "art": "pagoda",
+  "stopNoun": "work",
+  "intro": {
+    "id": "intro",
+    "title": "Welcome to the hut",
+    "text": "Welcome to 21_21 DESIGN SIGHT, and to Learning from Hōjōki: Tiny Architecture Reweaves Life.\n\nAbout eight hundred years ago, a poet named Kamo no Chōmei left Kyoto. He had lived through fires, an earthquake, famine, and the capital being moved. So he walked away and built himself a tiny hut in the hills, about three metres by three metres. In it he wrote the Hōjōki, which means A Record of My Ten-Foot Square Hut. It opens with a river: the water keeps flowing, but it is never the same water. Houses and people, he says, are just like that.\n\nIn this exhibition, the architect Yoshiharu Tsukamoto invited architects, designers, artists and companies to build their own version of Chōmei's hut. Every one keeps the same tiny footprint, about nine square metres. But each one uses its own tools and materials.\n\nTsukamoto's question is simple. Today we rely on huge systems for food, energy and safety. What could we take back and do for ourselves?\n\nTap any stop in the list when you reach that work. Take your time. Walk between the huts.",
+    "audio": "audio/intro.f0975bd3c5.mp3",
+    "duration": 63
+  },
+  "stops": [
+    {
+      "id": "hermitage",
+      "title": "The original hut",
+      "teaser": "Chōmei, in his own words",
+      "lat": 35.66655,
+      "lng": 139.73155,
+      "radius": 5,
+      "text": "Before the new huts, here is the original, as Chōmei described it.\n\nIt was small and it was temporary. The room was ten feet by ten, and less than seven feet high. It had a clay floor and a thatched roof, and the planks were joined with hooks, so the whole house came apart. Two carts could carry it. He did not want a permanent site.\n\nInside, he gave every side a job. On the west, a shelf for an image of the Buddha, lit by the setting sun. Above the north door, a few leather boxes of poems. Against the wall, a koto and a biwa. On the east, a bed of old fern leaves, a desk under the window, and a small brazier by the pillow. Outside, a little herb garden, and a bamboo pipe that brought water to a pool of stones.\n\nAfter five years, leaves piled under the eaves and moss grew on the floor. But he was content. In the 1891 translation by Natsume Sōseki, he says: \"Tranquility is my sole desire, to have no trouble is my happiness.\"\n\nAs you walk, look for these details. Many of the huts here answer them.",
+      "audio": "audio/hermitage.f2319f13d7.mp3",
+      "duration": 62
+    },
+    {
+      "id": "tabei",
+      "title": "Rotating Landscapes",
+      "teaser": "Mina Tabei",
+      "lat": 35.66673,
+      "lng": 139.73155,
+      "radius": 5,
+      "text": "This is Rotating Landscapes, by Mina Tabei. Tabei is also the graphic designer of the whole exhibition, and of the booklet.\n\nHer question is about the senses. What light fell on Chōmei's hut? What did it smell like? What sounds did he hear?\n\nShe takes things from the text, like the moon, the water, the hills and the instruments, and turns them into simple shapes. Then moving light falls across them. The shadows turn and change, slowly, all the time.\n\nSo stand still for a moment and watch. Nothing stays the same. That is the river from the first line of the Hōjōki, made out of light. Try to imagine the quiet, rich life that Chōmei found in a room this small.",
+      "audio": "audio/tabei.6cae12319b.mp3",
+      "duration": 39
+    },
+    {
+      "id": "shed",
+      "title": "The Storage Shed Relocation",
+      "teaser": "Yusuke Omuro + Kawacho-Gumi",
+      "lat": 35.66691,
+      "lng": 139.73155,
+      "radius": 5,
+      "text": "This project, by Yusuke Omuro and Kawacho-Gumi, looks at a different hut: a storage shed by the sea in Odawara.\n\nThe novelist Chōtarō Kawasaki lived and wrote in that shed. It was built just after the Great Kantō Earthquake of 1923, with walls of iron sheet painted black. There was no electricity, no gas and no water. Downstairs, fishing nets and old anchors. Upstairs, two worn red tatami mats, and an upturned beer crate for a desk, lit by one candle. When it rained, water came through the holes, and he ran to lie down in the closet. From the one big window, he could see the long line of the sea.\n\nThe real shed is gone. The team does not call this a rebuild. They call it a relocation: moving the shed out of his novels and into our world.\n\nBut the novels do not give the exact size, and the descriptions often disagree. So look at their design documents. How do you build a house from words, when the words are not sure?",
+      "audio": "audio/shed.280efc8b4b.mp3",
+      "duration": 55
+    },
+    {
+      "id": "walking",
+      "title": "Walking Hōjō",
+      "teaser": "Yusuke Obuchi + Jun Nakamura",
+      "lat": 35.66709,
+      "lng": 139.73155,
+      "radius": 5,
+      "text": "This is Walking Hōjō, by Yusuke Obuchi and Jun Nakamura. Yes, the hut walks.\n\nChōmei's hut came apart and moved on a cart. A modern version of that could be a camper van. But a camper van is about comfort. Chōmei wanted the opposite: to strip life back and ask what really keeps us alive.\n\nSo the team took an old animal feed silo from a farm. It was built to receive food from far away, a small piece of our supply system. They turned it into a home with only what you need. Laid on its side, the curved shell holds your body. You sit, lean or lie as the space suggests. The little window, once used to check the feed level, now lets in soft light, like a shoji screen.\n\nThere is no insulation. When it is hot, the hut walks into the shade. When it is cold, it walks into the sun, on six legs, like an animal. They call this architectural fasting.\n\nStood upright, it becomes an instrument. Pipes inside play a sound like a shakuhachi flute. One person plays, one person listens, like a tea room.",
+      "audio": "audio/walking.fe7c63cee6.mp3",
+      "duration": 61
+    },
+    {
+      "id": "london",
+      "title": "London Hōjōki",
+      "teaser": "Shin Egashira",
+      "lat": 35.66727,
+      "lng": 139.73155,
+      "radius": 5,
+      "text": "This is London Hōjōki, Atlas and Afterimage, by Shin Egashira.\n\nEgashira walked along the River Thames with a small hut on a camera, which he calls the Camera Hōjō-an. He thought of other people who recorded cities in crisis. In 1666, Samuel Pepys watched the Great Fire of London and wrote it in his diary. John Evelyn watched too, but he was already drawing the new city. And five hundred years before them, Chōmei recorded the fires and earthquakes of Kyoto.\n\nTo withdraw, to redraw, to record. Egashira wanted to record London as it is now.\n\nToday, London is not burning. But it still changes. Buildings are replaced and people move away. Loss now comes quietly, in everyday life.\n\nThe work has four layers that talk to each other. The hut, a place to watch from. Short written fragments. An atlas, a collage that mixes places and times. And moving images of what remains. Like Chōmei's river, it is the same Thames, but never the same water.",
+      "audio": "audio/london.61a0183e2a.mp3",
+      "duration": 58
+    },
+    {
+      "id": "2m26",
+      "title": "living with",
+      "teaser": "2m26",
+      "lat": 35.66655,
+      "lng": 139.7318,
+      "radius": 5,
+      "text": "This hut, living with, is by 2m26, a pair of builders who have lived and worked in Japan for about ten years.\n\nFor the last five, they have been repairing an old thatched farmhouse in a valley by a river, in Keihoku, north of Kyoto. When they arrived, they say, the house wanted to breathe, the garden wanted light, and the river gave its stream. In early summer, fireflies danced over the water every night.\n\nThey let the land teach them. Rice planted in May. Cedar bark in August. Rice harvest in September, bamboo in October, miscanthus grass for thatch in November, timber in winter. Animals joined them, and helped care for the land.\n\nLook at the fibres: straw, rope, bark, grass. The land makes the house. The house gives living things a place to rest. And living things care for the land. You can change one piece, and it still holds up.\n\nAfter the exhibition, this hut goes back to their land in Keihoku. They invite you to visit, and live with it.",
+      "audio": "audio/2m26.8b70c5c276.mp3",
+      "duration": 57
+    },
+    {
+      "id": "yamaguchi",
+      "title": "Shell Hermitage",
+      "teaser": "Yamaguchi Akira",
+      "lat": 35.66673,
+      "lng": 139.7318,
+      "radius": 5,
+      "text": "These works are by the painter Yamaguchi Akira: the Shell Hermitage, called Tsubi-an, and his plans titled An-An.\n\nYamaguchi says the second half of the Hōjōki reads like a happy utopia: no worry about disaster or food or people. So he planned a small, movable hut for a cheerful life in the country.\n\nHis first rule: you must sleep well, safe from rain. So the bed is a strong box shaped like a coffin, the size of his own body. Each night a small death, each morning a rebirth. He jokes that one day it will be his real coffin. But, he adds, if he gets sick he will go straight to hospital.\n\nThe hut uses cheap parts from a DIY store. Inside, the floor rises as you go in, and the walls turn in a spiral, like a shell. Tsubi is an old word for a snail shell.\n\nThen the An-An plans go further. At the end of the Hōjōki, Chōmei warns that even loving your little hut is an attachment. So these huts cannot stand alone. They lean on the empty spaces around 21_21, and borrow its water.",
+      "audio": "audio/yamaguchi.3222dcf5ec.mp3",
+      "duration": 59
+    },
+    {
+      "id": "mino-an",
+      "title": "Mino-an, Clad Hut Mountain Garden",
+      "teaser": "Tomoki Shoda + Takenaka + veig",
+      "lat": 35.66691,
+      "lng": 139.7318,
+      "radius": 5,
+      "text": "This is Mino-an, the Clad Hut Mountain Garden, in the Sunken Court. It is by Tomoki Shoda, who designed the exhibition space, with Takenaka Corporation and veig.\n\nThe idea starts with nests. Any animal that lives in one place changes the land around it. Paths get worn, wood gets collected, plants change. Near the nest the change is strong. Further away it fades. Chōmei did the same on Mount Hino, collecting firewood and bringing water through bamboo.\n\nSo this garden shows that fade. The plants closest to the hut are the most used and the most changed. Out at the edges, they are wilder.\n\nThe hut itself is made from the garden. The pillars and floor are forest timber. The walls and roof are woven from brushwood, branches, leaves and bark. Young plants grow in the walls before they go out to the fields.\n\nChōmei moved his hut on two ox carts. This one came from the forest of Ogawa-machi. After the exhibition, it goes back there, to be used again in a new way.",
+      "audio": "audio/mino-an.0663d3207f.mp3",
+      "duration": 57
+    },
+    {
+      "id": "suda",
+      "title": "Morning Glory and Balloon Flower",
+      "teaser": "Suda Yoshihiro",
+      "lat": 35.66709,
+      "lng": 139.7318,
+      "radius": 5,
+      "text": "These are Morning Glory and Balloon Flower, by Suda Yoshihiro.\n\nSuda carves plants from wood, one by one, and paints them so carefully that people often think they are real. Look closely. Then look again.\n\nHis own words about this show are few. He says he read the Hōjōki a long time ago. And he admits he is not yet as free as Chōmei was. He is still caught up in many things.\n\nThat honesty fits. Chōmei also laughed at himself. And a morning glory opens in the morning and is closed by noon. It is the river from the first page, again: here, and then gone.\n\nSpend a minute with them. They are very small, and very quiet, like the hut itself.",
+      "audio": "audio/suda.d5849f7218.mp3",
+      "duration": 38
+    },
+    {
+      "id": "pilgrimage",
+      "title": "Hōjō Pilgrimage",
+      "teaser": "Places of the hut",
+      "lat": 35.66727,
+      "lng": 139.7318,
+      "radius": 5,
+      "text": "The last section, the Hōjō Pilgrimage, follows real places connected to hermit huts.\n\nIn Kyoto: Shimogamo Shrine, where Chōmei was born into a family of shrine priests. Ōhara, where he first went to live alone. And Mount Hino, where he built the ten-foot square hut and wrote the Hōjōki.\n\nThen the story jumps north, to Hanamaki in Iwate. There is Takamura Sansō, the small mountain hut where the sculptor and poet Takamura Kōtarō lived alone for seven years after the war. And places tied to the poet Miyazawa Kenji: the English Coast on the Kitakami River, Enmanji temple on Kannon-yama, and the Saryō flower bed he designed.\n\nSo the hut is not one building. It is an idea that keeps coming back, whenever people feel the world is too much.\n\nThat is the end of the tour. Before you leave, think about your own home. What could you live without? And what would you take back and do for yourself? Thank you for listening.",
+      "audio": "audio/pilgrimage.228218f276.mp3",
+      "duration": 55
+    }
+  ]
+}
