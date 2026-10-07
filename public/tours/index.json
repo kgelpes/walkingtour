@@ -1,6 +1,34 @@
 {
   "tours": [
     {
+      "id": "jagda-2026",
+      "title": "JAGDA Exhibition 2026",
+      "jp": "JAGDA展 2026",
+      "city": "Design Hub, Tokyo Midtown",
+      "tagline": "Forty designers, eight regions",
+      "durationMin": 20,
+      "stops": 8,
+      "lat": 35.66505,
+      "lng": 139.7304,
+      "accent": "#e2401f",
+      "art": "pagoda",
+      "stopNoun": "region"
+    },
+    {
+      "id": "hojoki-2121",
+      "title": "Learning from Hōjōki",
+      "jp": "方丈記に学ぶ",
+      "city": "21_21 DESIGN SIGHT, Tokyo",
+      "tagline": "Tiny architecture reweaves life",
+      "durationMin": 45,
+      "stops": 10,
+      "lat": 35.66655,
+      "lng": 139.73155,
+      "accent": "#7a6a4f",
+      "art": "pagoda",
+      "stopNoun": "work"
+    },
+    {
       "id": "kiyomizu-dera",
       "title": "Kiyomizu-dera",
       "jp": "清水寺",

@@ -1,0 +1,120 @@
+{
+  "id": "jagda-2026",
+  "title": "JAGDA Exhibition 2026",
+  "jp": "JAGDA展 2026",
+  "city": "Design Hub, Tokyo Midtown",
+  "tagline": "Forty designers, eight regions",
+  "description": "An audio guide to JAGDA Exhibition 2026 at Tokyo Midtown Design Hub (Oct 2–25, 11:00–19:00, free). Five designers from each of eight regions of Japan, one stop per region. Indoors, GPS can’t tell the rooms apart: tap each region in the list when you reach it.",
+  "durationMin": 20,
+  "distanceM": 60,
+  "accent": "#e2401f",
+  "art": "pagoda",
+  "stopNoun": "region",
+  "voice": {
+    "provider": "elevenlabs",
+    "voiceId": "bu5eKETbFKC8G702EAU4",
+    "name": "Liam",
+    "model": "eleven_v4",
+    "settings": {
+      "stability": 0.35,
+      "similarity_boost": 0.8
+    }
+  },
+  "intro": {
+    "id": "intro",
+    "title": "Welcome to JAGDA Exhibition 2026",
+    "text": "Welcome to JAGDA Exhibition 2026, the 121st exhibition at Tokyo Midtown Design Hub.\n\nGraphic design in Japan used to be a big-city story. Today it grows everywhere, rooted in local places. JAGDA, the Japan Graphic Designers Association, has about three thousand members across the country. For this second edition, its committee chose forty designers and teams from eight regions: Hokkaido, Tohoku, Kanto-Koshinetsu, Tokyo, Chubu, Kansai, Chugoku-Shikoku, and Kyushu. Five from each.\n\nThe statement is called Design Geothermal: the heat that rises from the ground. It asks a hard question. How do we stay human, and stay close to our places, in a world of super-intelligent AI that can leave people behind? Its answer: love is close to heat. Use that heat, and cross borders.\n\nEach region also made its own poster for the show. You will find them with the work.\n\nTap a region when you reach it. Each stop is about a minute.",
+    "audio": "audio/intro.42cafd3948.mp3",
+    "duration": 62
+  },
+  "stops": [
+    {
+      "id": "hokkaido",
+      "title": "Hokkaido",
+      "teaser": "Adachi · Sanbongi · Nishimoto · Nomura · Pichik Pachik",
+      "lat": 35.66505,
+      "lng": 139.7304,
+      "radius": 5,
+      "text": "Hokkaido. Five designers, most of them based in Sapporo.\n\nShiori Adachi runs Shiori Graphic. Look for her peeeel works: layers of coloured paper, cut and peeled back, then photographed. They won prizes in Taiwan and Toyama. She is now opening a craft drink and gift shop.\n\nChiyori Sanbongi, born in 1994, works at KD, and has won typography and Sapporo art director awards.\n\nMiyuu Nishimoto studied linguistics before design. Since 2024 she works alone: design, drawing and handcraft. In her words, an activity of moving the hand and placing lines.\n\nSou Nomura leads Studio Wonder, and has won the Sapporo ADC grand prix.\n\nAnd Pichik Kato plus Pachik Sakamoto, a duo born in 1995. They make graphics and their own products, and they host the Sapporo ADC parties.",
+      "audio": "audio/hokkaido.38f019cb6a.mp3",
+      "duration": 52
+    },
+    {
+      "id": "tohoku",
+      "title": "Tohoku",
+      "teaser": "Kimura · Yamauchi · Enomoto · Yoshida · Takagi",
+      "lat": 35.66523,
+      "lng": 139.7304,
+      "radius": 5,
+      "text": "Tohoku, the north-east.\n\nMasayuki Kimura, in Aomori, works side by side with local businesses, and helps renovate empty houses. Last year, he says, he bought a whole big storehouse.\n\nRyohei Yamauchi of grams design office in Iwate wants to send good things out into the world, thinking and worrying with each client.\n\nYukihiro Enomoto works from Sendai, in Miyagi.\n\nKatsunobu Yoshida, in Yamagata, calls himself a collector, designer and printer. He gathers materials from ecosystems and workplaces and makes his own pigments, for very special printing. You may know his work from 21_21 DESIGN SIGHT across the garden.\n\nAnd Ichinosuke Takagi, in Iwaki, Fukushima, once worked as a kamaboko fish-cake craftsman. His design for igoku, a local care project for older people, won a Good Design Gold Award.",
+      "audio": "audio/tohoku.535d9f5349.mp3",
+      "duration": 53
+    },
+    {
+      "id": "kanto",
+      "title": "Kanto-Koshinetsu",
+      "teaser": "Sasame · Okazeri · Akiyoshi · Kozaki · Tsunoda",
+      "lat": 35.66541,
+      "lng": 139.7304,
+      "radius": 5,
+      "text": "Kanto-Koshinetsu: the region around Tokyo, out to Niigata.\n\nRyotaro Sasame, of TRUNK in Kasama, Ibaraki, talks to business owners to find the core they cannot yet put into words. His idea is to raise the purity.\n\nFumiko Okazeri, of fodesign in Saitama, has won twelve international awards in seven countries.\n\nAi Akiyoshi came home to Chiba in 2019. Her mission: turn hidden local value into pride.\n\nNaotoshi Kozaki, of KOZAKIKAKU in Kanagawa, uses creativity to make businesses work better, from strategy to logo to film.\n\nAnd Masashi Tsunoda, in Niigata, looks for the value hidden at the back of things. His work includes a logo for the factory windows of Tsubame-Sanjo, the metalworking towns.",
+      "audio": "audio/kanto.f5ff1eac3d.mp3",
+      "duration": 47
+    },
+    {
+      "id": "tokyo",
+      "title": "Tokyo",
+      "teaser": "Okamoto · Kodama · Saito · Shibatani · Maki",
+      "lat": 35.66559,
+      "lng": 139.7304,
+      "radius": 5,
+      "text": "Tokyo.\n\nTakuto Okamoto, born in 1998, works across graphics, film, photography, writing and music, looking for new ways of making that push against old frames.\n\nChiharu Kodama founded ium, and designs everything from brand ideas to identity, web and interfaces.\n\nTakumi Saito, from Niigata, works between Tokyo and Niigata.\n\nMai Shibatani, an art director at zero, moves between advertising, artist artwork and television.\n\nAnd Jujiro Maki, born in Okayama, is known for small, sharp flyers, covers and stickers for galleries and independent labels. One of his flyers won the JAGDA Award.",
+      "audio": "audio/tokyo.236b37d15f.mp3",
+      "duration": 39
+    },
+    {
+      "id": "chubu",
+      "title": "Chubu",
+      "teaser": "Futagami · Nakabayashi + Yasumoto · Murotani · Iida · Hirose",
+      "lat": 35.66505,
+      "lng": 139.73015,
+      "radius": 5,
+      "text": "Chubu, the middle of Japan.\n\nHarukimi Futagami, born in 2001, runs a gallery in Takaoka, Toyama. He is also the drummer of a rock band.\n\nNobuaki Nakabayashi and Sumie Yasumoto, of Tone in Kanazawa, run a design office with a shop and a sweets business next door. So they design from the client's side.\n\nKaori Murotani works with TSUGI in Fukui, a team known for craft and local product development.\n\nAya Iida, in Shizuoka, worked at Draft before going independent. Her clients include the Kyoto tea house Ippodo, and Wacoal.\n\nAnd Rena Hirose, in Nagoya, makes posters, logos and packages, and likes to think by hand.",
+      "audio": "audio/chubu.62c7a04786.mp3",
+      "duration": 41
+    },
+    {
+      "id": "kansai",
+      "title": "Kansai",
+      "teaser": "Nishiyama · Tamaoka · Suzuki · Wada · Nagaoka",
+      "lat": 35.66523,
+      "lng": 139.73015,
+      "radius": 5,
+      "text": "Kansai.\n\nTakuma Nishiyama, in Kyoto, turned an old machiya townhouse into Good Time Coffee. Running a real shop shapes his branding.\n\nMayumi Tamaoka works between Osaka and Awaji Island, where she also runs a community and charity events for dogs and cats.\n\nShinsuke Suzuki, of Bold in Osaka, likes uniqueness, things you cannot quite understand, and charming waste. Good design, he says, comes from good situations. Ideas often come in the shower. Or not.\n\nTakehiro Wada, of Design Hero in Kobe, runs events and works on social projects. He wants to be someone's hero.\n\nAnd Ryoko Nagaoka, in Nara, designs books and makes artwork. In 2024 she opened an art book shop called BO/OK.",
+      "audio": "audio/kansai.944d5112a5.mp3",
+      "duration": 48
+    },
+    {
+      "id": "chushikoku",
+      "title": "Chugoku-Shikoku",
+      "teaser": "Onishi · Sato · Yabuki · Kuwahara · Sato",
+      "lat": 35.66541,
+      "lng": 139.73015,
+      "radius": 5,
+      "text": "Chugoku and Shikoku, the west.\n\nKoichi Onishi, from Matsue, now leads JAGDA in Shimane.\n\nHideto Sato, in Okayama, calls his approach native, rooted design.\n\nNami Yabuki moved from Tokyo to Hiroshima and founded coto.toco. She aims for design where a thing is simply itself.\n\nAkira Kuwahara works quietly, deep in the mountains of Yamaguchi, taking a lot of time to think.\n\nAnd Asuka Sato, in Tokushima, works near temple sixteen of the Shikoku pilgrimage. She aims for design that warms the heart, and loves morning TV dramas and comedians on the radio.",
+      "audio": "audio/chushikoku.1b77f03525.mp3",
+      "duration": 37
+    },
+    {
+      "id": "kyushu",
+      "title": "Kyushu and Okinawa",
+      "teaser": "Yazawa · Okuda · Inoshita · Kawakami · Saji",
+      "lat": 35.66559,
+      "lng": 139.73015,
+      "radius": 5,
+      "text": "Last, Kyushu and Okinawa.\n\nHiroto Yazawa, born in 1999, works at Dejima Graph in Nagasaki, and has already won a Pentawards bronze and a Toyama poster prize.\n\nNaotatsu Okuda studied in London, and now teaches in Kumamoto. With friends, he supports children in disaster areas, and grows rice without pesticides.\n\nYu Inoshita, in Oita, has a long list of awards, including Good Design and the package design prize.\n\nHitoshi Kawakami, from Osaka, moved to Miyazaki in 2006 and works across ads, brands, web and film.\n\nAnd Toshikatsu Saji, born in Kyoto and trained in California, runs Sazie Graphics in Okinawa: logos, illustration, shops and craft products.\n\nThat is all forty. Before you go, look back at the eight regional posters together. Which heat felt closest to you? Thank you for listening.",
+      "audio": "audio/kyushu.6318cd3e38.mp3",
+      "duration": 54
+    }
+  ]
+}
