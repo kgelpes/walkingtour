@@ -10,6 +10,12 @@
   "accent": "#7a6a4f",
   "art": "pagoda",
   "stopNoun": "work",
+  "voice": {
+    "provider": "elevenlabs",
+    "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+    "name": "George",
+    "model": "eleven_multilingual_v2"
+  },
   "intro": {
     "id": "intro",
     "title": "Welcome to the hut",
