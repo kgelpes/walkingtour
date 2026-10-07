@@ -44,6 +44,7 @@ Geolocation needs HTTPS on phones. To test on a phone, deploy it (see below) or 
    Clips are levelled to podcast loudness (−16 LUFS) with `ffmpeg`, which needs to be installed, so a story stands out over the listener's music. `npm run audio -- --remaster` re-levels the existing clips without calling the API.
    Clips are content-hashed: only new or edited text is sent to ElevenLabs, and the generated file names and durations are written back into `tour.json`.
 4. `npm test` checks that every stop has audio and that the fences don't overlap.
+5. Merge to `main`. The iOS app (build 5 and later) loads `tours/index.json` from the site on launch, so the new tour shows up there too, with no TestFlight build. Its audio streams from the site until a later build bundles it.
 
 The API key is only used at build time on your machine. It never ships to the browser.
 
