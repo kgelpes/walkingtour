@@ -12,9 +12,13 @@
   "stopNoun": "work",
   "voice": {
     "provider": "elevenlabs",
-    "voiceId": "JBFqnCBsd6RMkjVDRZzb",
-    "name": "George",
-    "model": "eleven_multilingual_v2"
+    "voiceId": "bu5eKETbFKC8G702EAU4",
+    "name": "Liam",
+    "model": "eleven_v4",
+    "settings": {
+      "stability": 0.35,
+      "similarity_boost": 0.8
+    }
   },
   "intro": {
     "id": "intro",
